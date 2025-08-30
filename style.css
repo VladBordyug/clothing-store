@@ -1,0 +1,725 @@
+body {
+    background-color: #1a152d;
+    font-family: 'Fira Code', monospace;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 2px solid #5a537d;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #ff0000, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid white;
+    padding: 5px 10px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ff8c00;
+}
+
+/* Добавляем стрелку к CATALOGUE */
+.catalogue-link::after {
+    content: ' ▼';
+    font-size: 0.8em;
+}
+
+/* Только одна версия dropdown-menu для плавной анимации */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #332b47;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 10px 0;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.3s ease-in-out, opacity 0.3s;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block;
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.dropdown-menu li a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #5a537d;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px 0;
+}
+
+.product-card {
+    background-color: #2e2646;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.buy-button {
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy-button:hover {
+    background-color: #b30000;
+    transform: scale(1.05);
+}
+
+.buy-button:active {
+    background-color: #660000;
+    transform: scale(0.95);
+}
+
+/* Анимации */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* From Uiverse.io by dopekid_9309 */ 
+.comic-brutal-button-container {
+  --primary-color: #ff3d3d;
+  --secondary-color: #3d3dff;
+  --text-color: #000000;
+  --accent-color: #ffef00;
+  --panel-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
+
+.comic-brutal-button {
+  position: relative;
+  font-size: 1.5em;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  transform: rotate(-2deg);
+  transform-origin: center;
+  transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.button-inner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.8em 1.5em;
+  z-index: 3;
+  overflow: hidden;
+  transform: skew(-3deg, 1deg);
+  transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+  clip-path: polygon(
+    0% 10%,
+    3% 0%,
+    97% 0%,
+    100% 10%,
+    100% 90%,
+    97% 100%,
+    3% 100%,
+    0% 90%
+  );
+}
+
+.button-text {
+  position: relative;
+  font-weight: 900;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 5;
+  color: var(--text-color);
+  text-shadow:
+    0.05em 0.05em 0 var(--panel-color),
+    -0.05em -0.05em 0 var(--panel-color),
+    0.05em -0.05em 0 var(--panel-color),
+    -0.05em 0.05em 0 var(--panel-color);
+  transform: rotate(2deg);
+}
+
+.button-frame {
+  position: absolute;
+  top: -0.3em;
+  left: -0.3em;
+  right: -0.3em;
+  bottom: -0.3em;
+  background-color: var(--accent-color);
+  border: 0.15em solid var(--text-color);
+  z-index: 1;
+  transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.button-shadow {
+  position: absolute;
+  top: 0.4em;
+  left: 0.4em;
+  right: -0.4em;
+  bottom: -0.4em;
+  background-color: var(--shadow-color);
+  z-index: 0;
+  transition: all 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Halftone effect using CSS */
+.halftone-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at 30% 30%,
+    rgba(0, 0, 0, 0.2) 0.1em,
+    transparent 0.1em
+  );
+  background-size: 0.5em 0.5em;
+  background-position: 0 0;
+  opacity: 0.3;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+/* Ink splatter effect using CSS gradients */
+.ink-splatter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.08) 20%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 65%,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.08) 25%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 50%,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.08) 30%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.08) 15%,
+      transparent 40%
+    );
+}
+
+/* Button hover state */
+.comic-brutal-button:hover {
+  transform: rotate(-1deg) scale(1.05);
+}
+
+.comic-brutal-button:hover .button-inner {
+  transform: skew(-5deg, 2deg);
+  background-color: var(--secondary-color);
+}
+
+.comic-brutal-button:hover .button-text {
+  color: var(--panel-color);
+  text-shadow:
+    0.05em 0.05em 0 var(--text-color),
+    -0.05em -0.05em 0 var(--text-color),
+    0.05em -0.05em 0 var(--text-color),
+    -0.05em 0.05em 0 var(--text-color);
+}
+
+.comic-brutal-button:hover .button-shadow {
+  transform: translate(0.2em, 0.2em);
+}
+
+.comic-brutal-button:hover .ink-splatter {
+  opacity: 1;
+}
+
+/* Button focus state */
+.comic-brutal-button:focus {
+  outline: none;
+}
+
+.comic-brutal-button:focus .button-frame {
+  border-color: var(--secondary-color);
+}
+
+/* Button active state */
+.comic-brutal-button:active {
+  transform: rotate(0) scale(0.98);
+}
+
+.comic-brutal-button:active .button-inner {
+  transform: skew(0, 0);
+}
+
+.comic-brutal-button:active .button-shadow {
+  transform: translate(0.1em, 0.1em);
+}
+
+/* Comic burst animation */
+@keyframes burst {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.comic-brutal-button:active .button-text {
+  animation: burst 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Add comic-style border on focus */
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.comic-brutal-button:focus::after {
+  content: "";
+  position: absolute;
+  top: -0.5em;
+  left: -0.5em;
+  right: -0.5em;
+  bottom: -0.5em;
+  border: 0.15em dashed var(--text-color);
+  z-index: 0;
+  animation: dash 1s linear infinite;
+  pointer-events: none;
+}
+
+/* Additional brutalist comic book elements */
+.comic-brutal-button::before {
+  content: "";
+  position: absolute;
+  top: 0.4em;
+  left: 0.8em;
+  width: 1em;
+  height: 1em;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.comic-brutal-button:hover::before {
+  opacity: 0.7;
+}
+
+/* Action lines on click */
+@keyframes action-lines {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+.comic-brutal-button:active::before {
+  content: "";
+  position: absolute;
+  top: -1em;
+  left: -1em;
+  right: -1em;
+  bottom: -1em;
+  background-image: radial-gradient(var(--text-color) 0%, transparent 70%),
+    repeating-conic-gradient(
+      transparent 0%,
+      transparent 5%,
+      var(--text-color) 5%,
+      var(--text-color) 6%
+    );
+  opacity: 0;
+  z-index: 6;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  animation: action-lines 0.5s ease-out forwards;
+}
+/* From Uiverse.io by himanshu9682 */ 
+.type--A {
+  --line_color: #555555;
+  --back_color: #ffecf6;
+}
+.type--B {
+  --line_color: #1b1919;
+  --back_color: #e9ecff;
+}
+.type--C {
+  --line_color: #00135c;
+  --back_color: RED;
+}
+.button {
+  position: relative;
+  z-index: 0;
+  width: 240px;
+  height: 56px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--line_color);
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+.button__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.button::before,
+.button::after,
+.button__text::before,
+.button__text::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line_color);
+  transition: all 0.5s ease;
+}
+.button::before {
+  top: 0;
+  left: 54px;
+  width: calc(100% - 56px * 2 - 16px);
+}
+.button::after {
+  top: 0;
+  right: 54px;
+  width: 8px;
+}
+.button__text::before {
+  bottom: 0;
+  right: 54px;
+  width: calc(100% - 56px * 2 - 16px);
+}
+.button__text::after {
+  bottom: 0;
+  left: 54px;
+  width: 8px;
+}
+.button__line {
+  position: absolute;
+  top: 0;
+  width: 56px;
+  height: 100%;
+  overflow: hidden;
+}
+.button__line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 300px;
+  border: solid 3px var(--line_color);
+}
+.button__line:nth-child(1),
+.button__line:nth-child(1)::before {
+  left: 0;
+}
+.button__line:nth-child(2),
+.button__line:nth-child(2)::before {
+  right: 0;
+}
+.button:hover {
+  letter-spacing: 6px;
+}
+.button:hover::before,
+.button:hover .button__text::before {
+  width: 8px;
+}
+.button:hover::after,
+.button:hover .button__text::after {
+  width: calc(100% - 56px * 2 - 16px);
+}
+.button__drow1,
+.button__drow2 {
+  position: absolute;
+  z-index: -1;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+}
+.button__drow1 {
+  top: -16px;
+  left: 40px;
+  width: 32px;
+  height: 0;
+  transform: rotate(30deg);
+}
+.button__drow2 {
+  top: 44px;
+  left: 77px;
+  width: 32px;
+  height: 0;
+  transform: rotate(-127deg);
+}
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2::before,
+.button__drow2::after {
+  content: "";
+  position: absolute;
+}
+.button__drow1::before {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(-60deg);
+}
+.button__drow1::after {
+  top: -10px;
+  left: 45px;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(69deg);
+}
+.button__drow2::before {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(-146deg);
+}
+.button__drow2::after {
+  bottom: 26px;
+  left: -40px;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(-262deg);
+}
+.button__drow1,
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2,
+.button__drow2::before,
+.button__drow2::after {
+  background: var(--back_color);
+}
+.button:hover .button__drow1 {
+  animation: drow1 ease-in 0.06s;
+  animation-fill-mode: forwards;
+}
+.button:hover .button__drow1::before {
+  animation: drow2 linear 0.08s 0.06s;
+  animation-fill-mode: forwards;
+}
+.button:hover .button__drow1::after {
+  animation: drow3 linear 0.03s 0.14s;
+  animation-fill-mode: forwards;
+}
+.button:hover .button__drow2 {
+  animation: drow4 linear 0.06s 0.2s;
+  animation-fill-mode: forwards;
+}
+.button:hover .button__drow2::before {
+  animation: drow3 linear 0.03s 0.26s;
+  animation-fill-mode: forwards;
+}
+.button:hover .button__drow2::after {
+  animation: drow5 linear 0.06s 0.32s;
+  animation-fill-mode: forwards;
+}
+@keyframes drow1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100px;
+  }
+}
+@keyframes drow2 {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  11% {
+    opacity: 1;
+  }
+  100% {
+    width: 120px;
+  }
+}
+@keyframes drow3 {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80px;
+  }
+}
+@keyframes drow4 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 120px;
+  }
+}
+@keyframes drow5 {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 124px;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.button:not(:last-child) {
+  margin-bottom: 64px;
+}
+/* Контейнер для товарів */
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Три стовпці */
+    gap: 50px; /* Відступи між картками */
+    padding: 50px; /* Відступи з усіх боків */
+    margin: 0 auto; /* Центрування контейнера */
+    max-width: 1200px; /* Максимальна ширина */
+}
+
+/* Картка товару */
+.product-card {
+    background-color: #2e2646;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+    padding: 15px; /* Внутрішні відступи */
+}
+
+/* Зміна при наведенні */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Зображення товару */
+.product-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Заокруглені кути для зображень */
+}
