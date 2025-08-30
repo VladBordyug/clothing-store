@@ -447,7 +447,7 @@ body {
   --line_color: #00135c;
   --back_color: RED;
 }
-.button {
+.button{
   position: relative;
   z-index: 0;
   width: 240px;
@@ -458,6 +458,7 @@ body {
   color: var(--line_color);
   letter-spacing: 2px;
   transition: all 0.3s ease;
+  margin-top: 100px; /* Збільшили відступ зверху для кнопки */
 }
 .button__text {
   display: flex;
@@ -679,11 +680,13 @@ body {
 
 .container {
   width: 100%;
-  height: 300px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Розташування елементів зверху */
   align-items: center;
+  margin-top: 50px; /* Відступ зверху */
+  padding-bottom: 100px; /* Збільшили відступ знизу */
 }
 .button:not(:last-child) {
   margin-bottom: 64px;
