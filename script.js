@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { code: 'it', label: 'IT' }
     ];
 
-    // Переводы
+    
     const translations = {
         en: {
             catalogue: 'CATALOGUE',
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             signup: 'SIGN UP',
             login: 'LOGIN',
             buy: 'BUY'
+            
         },
         ua: {
             catalogue: 'КАТАЛОГ',
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             signup: 'РЕЄСТРАЦІЯ',
             login: 'ВХІД',
             buy: 'КУПИТИ'
+            
         },
         ru: {
             catalogue: 'КАТАЛОГ',

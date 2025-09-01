@@ -726,3 +726,6 @@ body {
     display: block;
     border-radius: 8px; /* Заокруглені кути для зображень */
 }
+.buy5{
+  text-decoration: none;
+}

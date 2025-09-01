@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fira Code', monospace;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #f4f4f4;
+    }
+    .total {
+      font-size: 18px;
+      text-align: right;
+      margin-top: 10px;
+    }
+    .clear-btn {
+      background: #c0392b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .clear-btn:hover {
+      background: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">CLOTHES SHOP</div>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link catalogue-link">CATALOGUE</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">T-shirts</a></li>
+            <li><a href="#">Hoodies</a></li>
+            <li><a href="#">Hats</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">ABOUT US</a></li>
+        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">SIGN UP</a></li>
+        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">LOGIN</a></li>
+        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
+        <li class="nav-item dropdown language-switcher">
+          <a href="#" class="nav-link">EN</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-lang="en">EN</a></li>
+            <li><a href="#" data-lang="ua">UA</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>🛒 Your Cart</h1>
+
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Size</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JS вставить товари -->
+    </tbody>
+  </table>
+
+  <div class="total">Total: $0</div>
+  <button class="clear-btn">Clear Cart</button>
+
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const tbody = document.querySelector('#cart-table tbody');
+      const totalDiv = document.querySelector('.total');
+      tbody.innerHTML = '';
+      
+      let total = 0;
+      cart.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.size}</td>
+          <td>$${item.price}</td>
+        `;
+        tbody.appendChild(row);
+        total += item.price;
+      });
+
+      totalDiv.textContent = `Total: $${total}`;
+    }
+
+    document.querySelector('.clear-btn').addEventListener('click', () => {
+      localStorage.removeItem('cart');
+      loadCart();
+    });
+
+    loadCart();
+  </script>
+</body>
+</html>
