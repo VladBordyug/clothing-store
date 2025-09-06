@@ -137,55 +137,78 @@
   </footer>
 
   <script>
-    let selectedSize = null;
+  let selectedSize = null;
+  let basePrice = 40; // стандартна ціна за замовчуванням
 
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      document.querySelector('.cart-items').textContent = `Items in Cart: ${cart.length}`;
+  // Функція для підрахунку надбавки
+  function getSizeExtra(size) {
+    switch (size) {
+      case "M": return 5;
+      case "XL": return 10;
+      case "2XL": return 15;
+      default: return 0; // S без надбавки
     }
+  }
+
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.querySelector('.cart-items').textContent = `Items in Cart: ${cart.length}`;
+  }
+  updateCartCount();
+
+  // Вибір розміру
+  document.querySelectorAll('.size-selector button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.size-selector button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = btn.textContent;
+
+      // Оновлюємо ціну
+      const activeThumb = document.querySelector('.thumbs img.active');
+      basePrice = parseFloat(activeThumb.dataset.price);
+      const newPrice = basePrice + getSizeExtra(selectedSize);
+      document.getElementById("product-price").textContent = `$${newPrice}`;
+    });
+  });
+
+  // Зміна товару при кліку на мініатюру
+  document.querySelectorAll('.thumbs img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
+      img.classList.add('active');
+      document.getElementById("main-img").src = img.src;
+      document.getElementById("product-name").textContent = img.dataset.name;
+      basePrice = parseFloat(img.dataset.price);
+
+      const newPrice = basePrice + getSizeExtra(selectedSize);
+      document.getElementById("product-price").textContent = `$${newPrice}`;
+    });
+  });
+
+  // Додавання в кошик
+  document.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+    if (!selectedSize) {
+      alert('Please select a size before adding to cart!');
+      return;
+    }
+
+    const finalPrice = basePrice + getSizeExtra(selectedSize);
+
+    const product = {
+      name: document.getElementById("product-name").textContent,
+      price: finalPrice,
+      img: document.getElementById("main-img").src,
+      size: selectedSize
+    };
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
     updateCartCount();
+    alert(`Added to cart: ${product.name}, size ${product.size}, price $${product.price}`);
+  });
+</script>
 
-    // Вибір розміру
-    document.querySelectorAll('.size-selector button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.size-selector button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedSize = btn.textContent;
-      });
-    });
-
-    // Зміна товару при кліку на мініатюру
-    document.querySelectorAll('.thumbs img').forEach(img => {
-      img.addEventListener('click', () => {
-        document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
-        img.classList.add('active');
-        document.getElementById("main-img").src = img.src;
-        document.getElementById("product-name").textContent = img.dataset.name;
-        document.getElementById("product-price").textContent = `$${img.dataset.price}`;
-      });
-    });
-
-    // Додавання в кошик
-    document.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-      if (!selectedSize) {
-        alert('Please select a size before adding to cart!');
-        return;
-      }
-
-      const product = {
-        name: document.getElementById("product-name").textContent,
-        price: parseFloat(document.getElementById("product-price").textContent.replace("$","")),
-        img: document.getElementById("main-img").src,
-        size: selectedSize
-      };
-
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(product);
-      localStorage.setItem('cart', JSON.stringify(cart));
-
-      updateCartCount();
-      alert(`Added to cart: ${product.name}, size ${product.size}`);
-    });
-  </script>
 </body>
 </html>

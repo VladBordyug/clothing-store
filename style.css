@@ -1,5 +1,6 @@
 body {
-    background-color: #1a152d;
+    background: url('63ad5c59-b759-4db4-95dc-62f1a547f61d.jpg') no-repeat center center fixed;
+    background-size: cover;
     font-family: 'Fira Code', monospace;
     margin: 0;
     padding: 0;
