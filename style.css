@@ -49,13 +49,13 @@ body {
     color: #ff8c00;
 }
 
-/* Добавляем стрелку к CATALOGUE */
+
 .catalogue-link::after {
     content: ' ▼';
     font-size: 0.8em;
 }
 
-/* Только одна версия dropdown-menu для плавной анимации */
+
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -150,7 +150,7 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-/* From Uiverse.io by dopekid_9309 */ 
+
 .comic-brutal-button-container {
   --primary-color: #ff3d3d;
   --secondary-color: #3d3dff;
@@ -240,7 +240,7 @@ body {
   transition: all 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* Halftone effect using CSS */
+
 .halftone-overlay {
   position: absolute;
   top: 0;
@@ -259,7 +259,7 @@ body {
   mix-blend-mode: multiply;
 }
 
-/* Ink splatter effect using CSS gradients */
+
 .ink-splatter {
   position: absolute;
   top: 0;
@@ -295,7 +295,7 @@ body {
     );
 }
 
-/* Button hover state */
+
 .comic-brutal-button:hover {
   transform: rotate(-1deg) scale(1.05);
 }
@@ -322,7 +322,7 @@ body {
   opacity: 1;
 }
 
-/* Button focus state */
+
 .comic-brutal-button:focus {
   outline: none;
 }
@@ -361,7 +361,7 @@ body {
   animation: burst 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Add comic-style border on focus */
+
 @keyframes dash {
   to {
     stroke-dashoffset: -20;
@@ -381,7 +381,7 @@ body {
   pointer-events: none;
 }
 
-/* Additional brutalist comic book elements */
+
 .comic-brutal-button::before {
   content: "";
   position: absolute;
@@ -435,7 +435,7 @@ body {
   pointer-events: none;
   animation: action-lines 0.5s ease-out forwards;
 }
-/* From Uiverse.io by himanshu9682 */ 
+
 .type--A {
   --line_color: #555555;
   --back_color: #ffecf6;
@@ -459,7 +459,7 @@ body {
   color: var(--line_color);
   letter-spacing: 2px;
   transition: all 0.3s ease;
-  margin-top: 100px; /* Збільшили відступ зверху для кнопки */
+  margin-top: 100px; 
 }
 .button__text {
   display: flex;
@@ -684,25 +684,25 @@ body {
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Розташування елементів зверху */
+  justify-content: flex-start; 
   align-items: center;
-  margin-top: 50px; /* Відступ зверху */
-  padding-bottom: 100px; /* Збільшили відступ знизу */
+  margin-top: 50px; 
+  padding-bottom: 100px; 
 }
 .button:not(:last-child) {
   margin-bottom: 64px;
 }
-/* Контейнер для товарів */
+
 .main-content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Три стовпці */
-    gap: 50px; /* Відступи між картками */
-    padding: 50px; /* Відступи з усіх боків */
-    margin: 0 auto; /* Центрування контейнера */
-    max-width: 1200px; /* Максимальна ширина */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 50px; 
+    padding: 50px; 
+    margin: 0 auto; 
+    max-width: 1200px; 
 }
 
-/* Картка товару */
+
 .product-card {
     background-color: #2e2646;
     border-radius: 10px;
@@ -711,22 +711,23 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 1s ease-in-out;
-    padding: 15px; /* Внутрішні відступи */
+    padding: 15px; 
 }
 
-/* Зміна при наведенні */
+
 .product-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Зображення товару */
+
 .product-card img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px; /* Заокруглені кути для зображень */
+    border-radius: 8px; 
 }
 .buy5{
   text-decoration: none;
 }
+
