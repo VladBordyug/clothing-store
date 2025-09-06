@@ -37,7 +37,6 @@
   </style>
 </head>
 <body>
-  <!-- ШАПКА така сама як в index.html -->
   <header class="header">
     <div class="logo">CLOTHES SHOP</div>
     <nav class="nav">
@@ -86,7 +85,7 @@
   <script>
     let selectedSize = null;
 
-    // завантаження товару з localStorage
+    
     const product = JSON.parse(localStorage.getItem("selectedProduct"));
     if (product) {
       document.getElementById("product-img").src = product.img;
@@ -124,3 +123,4 @@
   </script>
 </body>
 </html>
+
