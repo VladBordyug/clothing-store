@@ -1,4 +1,4 @@
-/* From Uiverse.io by alexruix */ 
+
 .form-box {
   max-width: 300px;
   background: #f1f7fe;
@@ -16,7 +16,7 @@
   text-align: center;
 }
 
-/*Form text*/
+
 .title {
   font-weight: bold;
   font-size: 1.6rem;
@@ -27,7 +27,7 @@
   color: #666;
 }
 
-/*Inputs box*/
+
 .form-container {
   overflow: hidden;
   border-radius: 8px;
@@ -65,7 +65,7 @@
   text-decoration: underline;
 }
 
-/*Button*/
+
 .form button {
   background-color: #0066ff;
   color: #fff;
@@ -80,4 +80,14 @@
 
 .form button:hover {
   background-color: #005ce6;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  background: linear-gradient(135deg, #6a0dad, #8a2be2); 
+  font-family: 'Fira Code', monospace;
 }
