@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    
+    // Генерируем пункты меню языков
     langMenu.innerHTML = '';
     availableLangs.forEach(lang => {
         const li = document.createElement('li');
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-        
+        // Назначаем обработчики для языков
         langMenu.querySelectorAll('[data-lang]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -162,5 +162,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 languageSwitcher.classList.remove('show');
             });
         });
-
     });
