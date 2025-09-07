@@ -152,7 +152,7 @@
   color: #fff;
   font-size: 13px;
   font-weight: 700;
-  background: linear-gradient(180deg, #363636 0%, #000 100%);
+  background: linear-gradient(180deg, purple 0%, #000 100%);
   cursor: pointer;
 }
 
@@ -209,23 +209,22 @@
   <table id="cart-table">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Size</th>
-        <th>Price</th>
-      </tr>
+  <th>Product</th>
+  <th>Size</th>
+  <th>Price</th>
+  <th>Remove</th>
+</tr>
+
     </thead>
     <tbody></tbody>
   </table>
 
   <div class="total">Total: $0</div>
-  <button class="clear-btn">Clear Cart</button>
+  <div class="cart-buttons">
+  <button class="cart-btn clear" id="clear-cart-btn">Очистити кошик</button>
+  <button class="cart-btn checkout" id="checkout-btn">Перейти до оплати</button>
+</div>
 
- 
-  <div style="text-align: center; margin-top: 20px;">
-    <button id="checkout-btn" class="clear-btn" style="background:#27ae60;">Перейти до оплати</button>
-  </div>
-
-  
   <div id="checkout-modal" style="
     display:none; 
     position:fixed; 
@@ -236,7 +235,7 @@
     z-index: 1000;">
     
     <div class="modal">
-     
+      <!-- Step 1: Card -->
       <form class="form" id="card-form">
         <div class="payment--options">
           <button type="button">PayPal</button>
@@ -302,28 +301,40 @@
 
   <script>
     function loadCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const tbody = document.querySelector('#cart-table tbody');
-      const totalDiv = document.querySelector('.total');
-      tbody.innerHTML = '';
-      let total = 0;
-      cart.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${item.name}</td><td>${item.size}</td><td>$${item.price}</td>`;
-        tbody.appendChild(row);
-        total += item.price;
-      });
-      totalDiv.textContent = `Total: $${total}`;
-    }
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const tbody = document.querySelector('#cart-table tbody');
+  const totalDiv = document.querySelector('.total');
+  tbody.innerHTML = '';
+  let total = 0;
 
-    document.querySelector('.clear-btn').addEventListener('click', () => {
-      localStorage.removeItem('cart');
+  cart.forEach((item, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.size}</td>
+      <td>$${item.price}</td>
+      <td><button class="remove-btn" data-index="${index}">❌</button></td>
+    `;
+    tbody.appendChild(row);
+    total += item.price;
+  });
+
+  totalDiv.textContent = `Total: $${total}`;
+
+  // Додаємо слухачі на кнопки видалення
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.index;
+      cart.splice(idx, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
       loadCart();
     });
+  });
+}
 
     loadCart();
 
-   
+    
     const checkoutBtn = document.getElementById("checkout-btn");
     const modal = document.getElementById("checkout-modal");
     const cardForm = document.getElementById("card-form");
@@ -332,14 +343,14 @@
     checkoutBtn.addEventListener("click", () => modal.style.display = "flex");
     modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
 
-   
+    // Step 1 -> Step 2
     cardForm.addEventListener("submit", e => {
       e.preventDefault();
       cardForm.style.display = "none";
       deliveryForm.style.display = "flex";
     });
 
-  
+    // Country + Post services
     const countries = [
       { name: "Ukraine", flag: "🇺🇦" },
       { name: "United States", flag: "🇺🇸" },
@@ -372,10 +383,10 @@
     const cityContainer = document.getElementById("city-container");
 const citySelect = document.getElementById("city");
 
-
+// список міст України (можеш розширити)
 const ukraineCities = [
   "Київ", "Львів", "Харків", "Одеса", "Дніпро", 
-  "Запоріжжя", "Вінниця", "Івано-Франківськ", "Чернівці", "Тернопіль", "Миргород", "Житомир"
+  "Запоріжжя", "Вінниця", "Івано-Франківськ", "Чернівці", "Тернопіль"
 ];
 
 function selectCountry(country) {
@@ -384,7 +395,7 @@ function selectCountry(country) {
   postService.innerHTML = "";
 
   if (country === "Ukraine") {
-   
+    // Показати поштові сервіси
     ["Нова Пошта","Укрпошта"].forEach(p => {
       const opt = document.createElement("option");
       opt.value = p; opt.textContent = p;
@@ -392,7 +403,7 @@ function selectCountry(country) {
     });
     postServiceContainer.style.display = "block";
 
-    
+    // Показати список міст
     citySelect.innerHTML = `<option value="">-- Select City --</option>`;
     ukraineCities.forEach(city => {
       const opt = document.createElement("option");
@@ -408,13 +419,13 @@ function selectCountry(country) {
     });
     postServiceContainer.style.display = "block";
 
-    
+    // для інших країн знову інпут
     citySelect.innerHTML = "";
     citySelect.outerHTML = `<input type="text" id="city" class="input_field" required>`;
   } else {
     postServiceContainer.style.display = "none";
 
-    
+    // інші країни → простий інпут
     citySelect.innerHTML = "";
     citySelect.outerHTML = `<input type="text" id="city" class="input_field" required>`;
   }
@@ -423,4 +434,3 @@ function selectCountry(country) {
   </script>
 </body>
 </html>
-
