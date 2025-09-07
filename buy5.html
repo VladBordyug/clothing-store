@@ -56,18 +56,7 @@
     .thumbs img.active {
       border: 2px solid #333;
     }
-    .size-selector button {
-      margin: 5px;
-      padding: 8px 15px;
-      border: 1px solid #333;
-      cursor: pointer;
-      background: #fff;
-      border-radius: 6px;
-    }
-    .size-selector button.active {
-      background: #333;
-      color: #fff;
-    }
+    
     footer {
       margin: 20px 0;
       text-align: center;
@@ -105,6 +94,10 @@
           <button>XL</button>
           <button>2XL</button>
         </div>
+<div class="quantity-selector" style="margin-top:10px;">
+  <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" value="1" min="1" style="width:60px; padding:5px; text-align:center;">
+</div>
 
         <div class="comic-brutal-button-container" style="margin-top:20px;">
           <button class="comic-brutal-button add-to-cart-btn">
@@ -153,7 +146,7 @@
       case "M": return 5;
       case "XL": return 10;
       case "2XL": return 15;
-      default: return 0; // S без надбавки
+      default: return 0; 
     }
   }
 
@@ -178,7 +171,7 @@
     });
   });
 
-  
+  // Зміна товару при кліку на мініатюру
   document.querySelectorAll('.thumbs img').forEach(img => {
     img.addEventListener('click', () => {
       document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
@@ -201,22 +194,25 @@
 
     const finalPrice = basePrice + getSizeExtra(selectedSize);
 
-    const product = {
-      name: document.getElementById("product-name").textContent,
-      price: finalPrice,
-      img: document.getElementById("main-img").src,
-      size: selectedSize
-    };
+    const quantity = parseInt(document.getElementById("quantity").value) || 1;
 
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
+const product = {
+  name: document.getElementById("product-name").textContent,
+  price: finalPrice,
+  img: document.getElementById("main-img").src,
+  size: selectedSize,
+  quantity: quantity
+};
+
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+cart.push(product);
+localStorage.setItem('cart', JSON.stringify(cart));
+
 
     updateCartCount();
-    alert(`Added to cart: ${product.name}, size ${product.size}, price $${product.price}`);
+    
   });
 </script>
 
 </body>
-
 </html>
