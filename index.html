@@ -140,5 +140,23 @@
   </main>
 
   <script src="script.js"></script>
+  <div id="cookie-banner" class="cookie-banner">
+  <p>🍪 Ми використовуємо cookies, щоб зробити сайт кращим. <a href="#">Дізнатися більше</a></p>
+  <button id="accept-cookies">Прийняти</button>
+</div>
+<script>
+  const banner = document.getElementById("cookie-banner");
+  const btn = document.getElementById("accept-cookies");
+
+  if (localStorage.getItem("cookiesAccepted")) {
+    banner.style.display = "none";
+  }
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    banner.style.display = "none";
+  });
+</script>
+
 </body>
 </html>
