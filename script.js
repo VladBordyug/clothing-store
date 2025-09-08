@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Language switcher functionality
+    
     const languageSwitcher = document.querySelector('.language-switcher');
     const currentLangLink = languageSwitcher.querySelector('.nav-link');
     const langMenu = languageSwitcher.querySelector('.dropdown-menu');
 
-    // Языки для переключения
+    
     const availableLangs = [
         { code: 'en', label: 'EN' },
         { code: 'ua', label: 'UA' },
@@ -43,6 +43,44 @@ document.addEventListener('DOMContentLoaded', () => {
         { code: 'es', label: 'ES' },
         { code: 'it', label: 'IT' }
     ];
+const loadMoreBtn = document.getElementById("load-more");
+const loader = document.getElementById("loader");
+const mainContent = document.querySelector(".main-content");
+
+loadMoreBtn.addEventListener("click", () => {
+  loadMoreBtn.style.display = "none";
+  loader.style.display = "block";
+
+  
+  setTimeout(() => {
+    loader.style.display = "none";
+
+    
+    for (let i = 1; i <= 3; i++) {
+      const newCard = document.createElement("div");
+      newCard.classList.add("product-card");
+      newCard.innerHTML = `
+        <img src="Shady${i}.webp" alt="New Product ${i}">
+        <div class="comic-brutal-button-container">
+          <button class="comic-brutal-button">
+            <div class="button-inner">
+              <a href="buy5.html" class="buy5">
+                <span class="button-text">buy</span>
+              </a>
+              <div class="halftone-overlay"></div>
+              <div class="ink-splatter"></div>
+            </div>
+            <div class="button-shadow"></div>
+            <div class="button-frame"></div>
+          </button>
+        </div>
+      `;
+      mainContent.appendChild(newCard);
+    }
+
+    loadMoreBtn.style.display = "inline-block"; 
+  }, 2000);
+});
 
     
     const translations = {

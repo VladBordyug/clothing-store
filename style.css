@@ -1,5 +1,5 @@
 body {
-    background: url('63ad5c59-b759-4db4-95dc-62f1a547f61d.jpg') no-repeat center center fixed;
+    background: url('abstraktnyi-temnyi-razmytyi-fon-gladkii-gradient-cveta-tekstury-blestasii-arkii-uzor-veb-saita-zagolovok-bannera-ili-graficeskoe-izobrazenie-bokovoi-paneli.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Fira Code', monospace;
     margin: 0;
@@ -19,7 +19,7 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     color: white;
-    background: linear-gradient(90deg, #ff0000, #ff8c00);
+    background: linear-gradient(90deg, #170d3e, #17034d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     border: 2px solid white;
@@ -1076,4 +1076,71 @@ body {
   outline: none;
   border-color: #ba55d3;
   box-shadow: 0 0 10px rgba(186, 85, 211, 0.8);
+}
+.load-more-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.load-more-btn {
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.load-more-btn:hover {
+  background: #444;
+}
+
+.loader {
+  margin: 15px auto;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+body {
+  background-color: #010a1f; 
+  color: white; 
+  font-family: "Fira Code", monospace;
+}
+
+
+.product-card {
+  background: #02112f; 
+  border: 2px solid #1f3b73;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 0; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 0; 
+}
+
+
+.comic-brutal-button .button-inner .button-text {
+  color: white;
+}
+.comic-brutal-button .button-text {
+  font-weight: 400; /* звичайна товщина */
+  font-family: "Fira Code", monospace; /* щоб було однаково */
 }
