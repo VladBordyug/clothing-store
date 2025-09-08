@@ -144,13 +144,13 @@ body {
     transform: scale(0.95);
 }
 
-/* Анимации */
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-/* From Uiverse.io by dopekid_9309 */ 
+
 .comic-brutal-button-container {
   --primary-color: #ff3d3d;
   --secondary-color: #3d3dff;
@@ -875,7 +875,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s ease;
-  text-transform: uppercase; /* щоб буква була чіткою */
+  text-transform: uppercase; 
   letter-spacing: 1px;
   z-index: 1;
 }
@@ -1082,20 +1082,42 @@ body {
   margin: 20px 0;
 }
 
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
 .load-more-btn {
-  background: black;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
+  --😀: #644dff;
+  --😀😀: #4836bb;
+  --😀😀😀: #654dff63;
   cursor: pointer;
-  font-family: "Fira Code", monospace;
-  font-size: 16px;
-  transition: 0.3s;
+  width: 184px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  background: var(--😀);
+  border: 2px solid var(--😀😀);
+  border-radius: .75rem;
+  box-shadow: 0 8px 0 var(--😀😀);
+  transform: skew(-10deg);
+  transition: all .1s ease;
+  filter: drop-shadow(0 15px 20px var(--😀😀😀));
 }
 
 .load-more-btn:hover {
-  background: #444;
+  letter-spacing: 0px;
+  transform: skew(-10deg) translateY(8px);
+  box-shadow: 0 0 0 var(--😀😀😀);
+  text-align: center;
 }
 
 .loader {
@@ -1141,8 +1163,8 @@ body {
   color: white;
 }
 .comic-brutal-button .button-text {
-  font-weight: 400; /* звичайна товщина */
-  font-family: "Fira Code", monospace; /* щоб було однаково */
+  font-weight: 400; 
+  font-family: "Fira Code", monospace; 
 }
 .price {
   font-size: 18px;
@@ -1152,19 +1174,19 @@ body {
   text-align: center;
 }
 .site-footer {
-    background-color: #111; /* Темний фон, як у шапці сайту */
-    color: #a0a0a0;       /* Світло-сірий текст для читабельності */
+    background-color: #111;
+    color: #a0a0a0;       
     padding: 25px 0;
     text-align: center;
-    font-family: 'Fira Code', monospace; /* Використовуємо шрифт вашого сайту */
-    border-top: 1px solid #333; /* Тонка лінія для відокремлення */
+    font-family: 'Fira Code', monospace; 
+    border-top: 1px solid #333; 
   }
 
   .footer-container {
     max-width: 960px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Розміщуємо елементи по боках */
+    justify-content: space-between; 
     align-items: center;
     padding: 0 20px;
   }
@@ -1176,16 +1198,16 @@ body {
 
   .social-icons a {
     display: inline-block;
-    margin-left: 15px; /* Відстань між іконками */
-    transition: transform 0.2s ease-in-out; /* Плавна анімація */
+    margin-left: 15px; 
+    transition: transform 0.2s ease-in-out; 
   }
 
   .social-icons a:hover {
-    transform: scale(1.1); /* Трохи збільшуємо іконку при наведенні */
+    transform: scale(1.1); 
     opacity: 0.9;
   }
 
   .social-icons img {
-    width: 24px; /* Компактний розмір іконок */
+    width: 24px; 
     height: 24px;
   }
