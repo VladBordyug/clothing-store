@@ -1144,3 +1144,48 @@ body {
   font-weight: 400; /* звичайна товщина */
   font-family: "Fira Code", monospace; /* щоб було однаково */
 }
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #222;
+  text-align: center;
+}
+.site-footer {
+    background-color: #111; /* Темний фон, як у шапці сайту */
+    color: #a0a0a0;       /* Світло-сірий текст для читабельності */
+    padding: 25px 0;
+    text-align: center;
+    font-family: 'Fira Code', monospace; /* Використовуємо шрифт вашого сайту */
+    border-top: 1px solid #333; /* Тонка лінія для відокремлення */
+  }
+
+  .footer-container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Розміщуємо елементи по боках */
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .copyright-text {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin-left: 15px; /* Відстань між іконками */
+    transition: transform 0.2s ease-in-out; /* Плавна анімація */
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Трохи збільшуємо іконку при наведенні */
+    opacity: 0.9;
+  }
+
+  .social-icons img {
+    width: 24px; /* Компактний розмір іконок */
+    height: 24px;
+  }
