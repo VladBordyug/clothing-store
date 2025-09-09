@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMINEM shop</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/avif" href="header_logo_x300_x300_d15f5425-c546-4e37-a4b4-3ebda5c346c5.avif">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html">
+    <div class="logo">EMINEM SHOP</div>
+    </a>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link catalogue-link">CATALOGUE</a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">T-shirts</a></li>
+            <li><a href="hoodies.html">Hoodies</a></li>
+            <li><a href="#">Hats</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">SIGN UP</a></li>
+        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">LOGIN</a></li>
+        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
+        <li class="nav-item dropdown language-switcher">
+          <a href="#" class="nav-link">EN</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-lang="en">EN</a></li>
+            <li><a href="#" data-lang="ua">UA</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="product-card">
+      <img src="EmENCORE0610P01.webp" alt="Product Image 1">
+      <div class="comic-brutal-button-container">
+        <button class="comic-brutal-button">
+          <div class="button-inner">
+            <a href="buy5.html" class="buy5">
+              <span class="button-text">buy</span>
+            </a>
+            <div class="halftone-overlay"></div>
+            <div class="ink-splatter"></div>
+          </div>
+          <div class="button-shadow"></div>
+          <div class="button-frame"></div>
+        </button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="hat_01.webp" alt="Product Image 2">
+      <div class="comic-brutal-button-container">
+        <button class="comic-brutal-button">
+          <div class="button-inner">
+            <a href="buy5.html" class="buy5">
+              <span class="button-text">buy</span>
+            </a>
+            <div class="halftone-overlay"></div>
+            <div class="ink-splatter"></div>
+          </div>
+          <div class="button-shadow"></div>
+          <div class="button-frame"></div>
+        </button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="Name_Tag_Patch_Dad_Hat_Male_Model.webp" alt="Product Image 3">
+      <div class="comic-brutal-button-container">
+        <button class="comic-brutal-button">
+          <div class="button-inner">
+            <a href="buy5.html" class="buy5">
+              <span class="button-text">buy</span>
+            </a>
+            <div class="halftone-overlay"></div>
+            <div class="ink-splatter"></div>
+          </div>
+          <div class="button-shadow"></div>
+          <div class="button-frame"></div>
+        </button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="Stan6061_3fb6b2a8-0762-413c-897f-8f62b8d67d2c (1).webp" alt="Product Image 1">
+      <div class="comic-brutal-button-container">
+        <button class="comic-brutal-button">
+          <div class="button-inner">
+            <a href="buy5.html" class="buy5">
+              <span class="button-text">buy</span>
+            </a>
+            <div class="halftone-overlay"></div>
+            <div class="ink-splatter"></div>
+          </div>
+          <div class="button-shadow"></div>
+          <div class="button-frame"></div>
+        </button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="TODSSHat_Detail.webp" alt="Product Image 2">
+      <div class="comic-brutal-button-container">
+        <button class="comic-brutal-button">
+          <div class="button-inner">
+            <a href="buy5.html" class="buy5">
+              <span class="button-text">buy</span>
+            </a>
+            <div class="halftone-overlay"></div>
+            <div class="ink-splatter"></div>
+          </div>
+          <div class="button-shadow"></div>
+          <div class="button-frame"></div>
+        </button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="EmENCORE0587P01.webp" alt="Product Image 3">
+      <div class="comic-brutal-button-container">
+        <button class="comic-brutal-button">
+          <div class="button-inner">
+            <a href="buy5.html" class="buy5">
+              <span class="button-text">buy</span>
+            </a>
+            <div class="halftone-overlay"></div>
+            <div class="ink-splatter"></div>
+          </div>
+          <div class="button-shadow"></div>
+          <div class="button-frame"></div>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <div id="cookie-banner" class="cookie-banner">
+  <p>🍪 Ми використовуємо cookies, щоб зробити сайт кращим. <a href="#">Дізнатися більше</a></p>
+  <button id="accept-cookies">Прийняти</button>
+</div>
+<script>
+  const banner = document.getElementById("cookie-banner");
+  const btn = document.getElementById("accept-cookies");
+
+  
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    banner.style.display = "none";
+  });
+</script>
+<div class="load-more-container">
+  <button id="load-more" class="load-more-btn">Показати більше</button>
+  <div id="loader" class="loader" style="display:none;"></div>
+</div>
+<footer class="site-footer">
+  
+  <div class="footer-container">
+    <p class="copyright-text">&copy; 2025 EMINEM SHOP. All Rights Reserved.</p>
+    <div class="social-icons">
+      <a href="#" target="_blank" title="Telegram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/800px-Telegram_logo.svg.png" alt="Telegram">
+      </a>
+      <a href="#" target="_blank" title="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+k
