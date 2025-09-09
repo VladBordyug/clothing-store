@@ -235,3 +235,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+window.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    // Обробник кліку на кнопку
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true'); // зберігаємо вибір
+        cookieBanner.style.display = 'none'; // ховаємо банер
+    });
+});
