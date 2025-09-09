@@ -17,10 +17,10 @@
     <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link catalogue-link">CATALOGUE</a>
+          <a href="javascript:void(0);" class="nav-link catalogue-link">CATALOGUE</a>
           <ul class="dropdown-menu">
             <li><a href="index.html">T-shirts</a></li>
-            <li><a href="#">Hoodies</a></li>
+            <li><a href="hoodies.html">Hoodies</a></li>
             <li><a href="hats.html">Hats</a></li>
           </ul>
         </li>
@@ -137,7 +137,39 @@
       </div>
     </div>
   </main>
+<script src="script.js"></script>
+  <div id="cookie-banner" class="cookie-banner">
+  <p>🍪 Ми використовуємо cookies, щоб зробити сайт кращим. <a href="#">Дізнатися більше</a></p>
+  <button id="accept-cookies">Прийняти</button>
+</div>
+<script>
+  const banner = document.getElementById("cookie-banner");
+  const btn = document.getElementById("accept-cookies");
 
-  <script src="script.js"></script>
+  
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    banner.style.display = "none";
+  });
+</script>
+<div class="load-more-container">
+  <button id="load-more" class="load-more-btn">Показати більше</button>
+  <div id="loader" class="loader" style="display:none;"></div>
+</div>
+<footer class="site-footer">
+  <div class="footer-container">
+    <p class="copyright-text">&copy; 2025 EMINEM SHOP. All Rights Reserved. by VladB</p>
+    <div class="social-icons">
+      <a href="#" target="_blank" title="Telegram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/800px-Telegram_logo.svg.png" alt="Telegram">
+      </a>
+      <a href="#" target="_blank" title="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</footer>
+  
 </body>
 </html>
