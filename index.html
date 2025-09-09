@@ -10,70 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/avif" href="header_logo_x300_x300_d15f5425-c546-4e37-a4b4-3ebda5c346c5.avif">
   <style>
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-    .modal {
-      background: #181818;
-      color: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      width: 400px;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 0 25px rgba(220,20,60,0.6);
-      font-family: 'Fira Code', monospace;
-    }
-    .modal h2 {
-      margin-bottom: 25px;
-      font-size: 24px;
-      letter-spacing: 1px;
-      color: #ff0033;
-    }
-    .modal input {
-      width: 100%;
-      padding: 12px;
-      margin: 12px 0;
-      border: 2px solid #333;
-      border-radius: 8px;
-      background: #111;
-      color: #fff;
-      font-size: 14px;
-    }
-    .modal button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 14px;
-      background: #ff0033;
-      border: none;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .modal button:hover {
-      background: crimson;
-    }
-    .close-modal {
-      position: absolute;
-      top: 12px;
-      right: 18px;
-      font-size: 22px;
-      cursor: pointer;
-      color: #aaa;
-    }
-    .close-modal:hover {
-      color: #fff;
-    }
+    .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); align-items:center; justify-content:center; z-index:999; }
+    .modal { background:#181818; color:#fff; padding:40px; border-radius:16px; width:400px; text-align:center; position:relative; box-shadow:0 0 25px rgba(220,20,60,0.6); font-family:'Fira Code', monospace; }
+    .modal h2 { margin-bottom:25px; font-size:24px; letter-spacing:1px; color:#ff0033; }
+    .modal input { width:100%; padding:12px; margin:12px 0; border:2px solid #333; border-radius:8px; background:#111; color:#fff; font-size:14px; }
+    .modal button { margin-top:20px; width:100%; padding:14px; background:#ff0033; border:none; border-radius:10px; color:#fff; font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s; }
+    .modal button:hover { background:crimson; }
+    .close-modal { position:absolute; top:12px; right:18px; font-size:22px; cursor:pointer; color:#aaa; }
+    .close-modal:hover { color:#fff; }
   </style>
 </head>
 <body>
@@ -94,7 +38,7 @@
         </li>
         <li class="nav-item"><a href="#" id="open-signup" class="nav-link">SIGN UP</a></li>
         <li class="nav-item"><a href="#" id="open-login" class="nav-link">LOGIN</a></li>
-        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
+        <li class="nav-item"><a href="cart.html" class="nav-link cart-link">CART</a></li>
         <li class="nav-item dropdown language-switcher">
           <a href="#" class="nav-link">EN</a>
           <ul class="dropdown-menu"></ul>
@@ -397,6 +341,7 @@
     </div>
   </main>
 
+  <!-- Signup Modal -->
   <div class="modal-overlay" id="signup-modal">
     <div class="modal">
       <span class="close-modal" data-close="signup-modal">&times;</span>
@@ -408,6 +353,7 @@
     </div>
   </div>
 
+  <!-- Login Modal -->
   <div class="modal-overlay" id="login-modal">
     <div class="modal">
       <span class="close-modal" data-close="login-modal">&times;</span>
@@ -418,11 +364,13 @@
     </div>
   </div>
 
+  <!-- Cookie Banner -->
   <div id="cookie-banner" class="cookie-banner">
     <p>🍪 Ми використовуємо cookies, щоб зробити сайт кращим. <a href="#">Дізнатися більше</a></p>
     <button id="accept-cookies">Прийняти</button>
   </div>
 
+  <!-- Load More -->
   <div class="load-more-container">
     <button id="load-more" class="load-more-btn">Показати більше</button>
     <div id="loader" class="loader" style="display:none;"></div>

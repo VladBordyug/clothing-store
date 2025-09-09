@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.classList.toggle('show');
     });
   });
+
   window.addEventListener('click', e => {
     dropdowns.forEach(dropdown => {
       if (!dropdown.contains(e.target)) dropdown.classList.remove('show');
@@ -60,106 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const translations = {
-    en: {
-      catalogue: 'CATALOGUE',
-      tshirts: 'T-shirts',
-      hoodies: 'Hoodies',
-      hats: 'Hats',
-      jackets: 'Jackets',
-      about: 'ABOUT US',
-      signup: 'SIGN UP',
-      login: 'LOGIN',
-      buy: 'BUY',
-      loadmore: 'LOAD MORE',
-      registerbtn: 'Register',
-      loginbtn: 'Login'
-    },
-    ua: {
-      catalogue: 'КАТАЛОГ',
-      tshirts: 'Футболки',
-      hoodies: 'Худі',
-      hats: 'Кепки',
-      jackets: 'Куртки',
-      about: 'ПРО НАС',
-      signup: 'РЕЄСТРАЦІЯ',
-      login: 'ВХІД',
-      buy: 'КУПИТИ',
-      loadmore: 'ПОКАЗАТИ БІЛЬШЕ',
-      registerbtn: 'Зареєструватися',
-      loginbtn: 'Увійти'
-    },
-    ru: {
-      catalogue: 'КАТАЛОГ',
-      tshirts: 'Футболки',
-      hoodies: 'Худи',
-      hats: 'Кепки',
-      jackets: 'Куртки',
-      about: 'О НАС',
-      signup: 'РЕГИСТРАЦИЯ',
-      login: 'ВОЙТИ',
-      buy: 'КУПИТЬ',
-      loadmore: 'ПОКАЗАТЬ ЕЩЁ',
-      registerbtn: 'Зарегистрироваться',
-      loginbtn: 'Войти'
-    },
-    de: {
-      catalogue: 'KATALOG',
-      tshirts: 'T-Shirts',
-      hoodies: 'Kapuzenpullover',
-      hats: 'Mützen',
-      jackets: 'Jacken',
-      about: 'ÜBER UNS',
-      signup: 'REGISTRIEREN',
-      login: 'ANMELDEN',
-      buy: 'KAUFEN',
-      loadmore: 'MEHR ANZEIGEN',
-      registerbtn: 'Registrieren',
-      loginbtn: 'Einloggen'
-    },
-    fr: {
-      catalogue: 'CATALOGUE',
-      tshirts: 'T-shirts',
-      hoodies: 'Sweats à capuche',
-      hats: 'Casquettes',
-      jackets: 'Vestes',
-      about: 'À PROPOS',
-      signup: 'INSCRIPTION',
-      login: 'CONNEXION',
-      buy: 'ACHETER',
-      loadmore: 'AFFICHER PLUS',
-      registerbtn: 'S’inscrire',
-      loginbtn: 'Se connecter'
-    },
-    es: {
-      catalogue: 'CATÁLOGO',
-      tshirts: 'Camisetas',
-      hoodies: 'Sudaderas',
-      hats: 'Gorras',
-      jackets: 'Chaquetas',
-      about: 'SOBRE NOSOTROS',
-      signup: 'REGISTRARSE',
-      login: 'INICIAR SESIÓN',
-      buy: 'COMPRAR',
-      loadmore: 'MOSTRAR MÁS',
-      registerbtn: 'Registrarse',
-      loginbtn: 'Entrar'
-    },
-    it: {
-      catalogue: 'CATALOGO',
-      tshirts: 'Magliette',
-      hoodies: 'Felpe',
-      hats: 'Cappelli',
-      jackets: 'Giacche',
-      about: 'CHI SIAMO',
-      signup: 'REGISTRATI',
-      login: 'ACCEDI',
-      buy: 'ACQUISTA',
-      loadmore: 'MOSTRA ALTRO',
-      registerbtn: 'Registrati',
-      loginbtn: 'Accedi'
-    }
+    en: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Hoodies', hats:'Hats', jackets:'Jackets', about:'ABOUT US', signup:'SIGN UP', login:'LOGIN', buy:'BUY', loadmore:'LOAD MORE', registerbtn:'Register', loginbtn:'Login', cart:'CART' },
+    ua: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худі', hats:'Кепки', jackets:'Куртки', about:'ПРО НАС', signup:'РЕЄСТРАЦІЯ', login:'ВХІД', buy:'КУПИТИ', loadmore:'ПОКАЗАТИ БІЛЬШЕ', registerbtn:'Зареєструватися', loginbtn:'Увійти', cart:'КОШИК' },
+    ru: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худи', hats:'Кепки', jackets:'Куртки', about:'О НАС', signup:'РЕГИСТРАЦИЯ', login:'ВОЙТИ', buy:'КУПИТЬ', loadmore:'ПОКАЗАТЬ ЕЩЁ', registerbtn:'Зарегистрироваться', loginbtn:'Войти', cart:'КОРЗИНА' },
+    de: { catalogue:'KATALOG', tshirts:'T-Shirts', hoodies:'Kapuzenpullover', hats:'Mützen', jackets:'Jacken', about:'ÜBER UNS', signup:'REGISTRIEREN', login:'ANMELDEN', buy:'KAUFEN', loadmore:'MEHR ANZEIGEN', registerbtn:'Registrieren', loginbtn:'Einloggen', cart:'WAGEN' },
+    fr: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Sweats à capuche', hats:'Casquettes', jackets:'Vestes', about:'À PROPOS', signup:'INSCRIPTION', login:'CONNEXION', buy:'ACHETER', loadmore:'AFFICHER PLUS', registerbtn:'S’inscrire', loginbtn:'Se connecter', cart:'PANIER' },
+    es: { catalogue:'CATÁLOGO', tshirts:'Camisetas', hoodies:'Sudaderas', hats:'Gorras', jackets:'Chaquetas', about:'SOBRE NOSOTROS', signup:'REGISTRARSE', login:'INICIAR SESIÓN', buy:'COMPRAR', loadmore:'MOSTRAR MÁS', registerbtn:'Registrarse', loginbtn:'Entrar', cart:'CARRITO' },
+    it: { catalogue:'CATALOGO', tshirts:'Magliette', hoodies:'Felpe', hats:'Cappelli', jackets:'Giacche', about:'CHI SIAMO', signup:'REGISTRATI', login:'ACCEDI', buy:'ACQUISTA', loadmore:'MOSTRA ALTRO', registerbtn:'Registrati', loginbtn:'Accedi', cart:'CARRELLO' }
   };
 
+  // Populate language menu
   langMenu.innerHTML = '';
   availableLangs.forEach(lang => {
     const li = document.createElement('li');
@@ -180,15 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
     catalogueMenu.children[3].querySelector('a').textContent = translations[lang].jackets;
 
     const navItems = document.querySelectorAll('.nav-list .nav-item:not(.dropdown)');
-    if (navItems.length >= 3) {
-      navItems[0].querySelector('.nav-link').textContent = translations[lang].about;
-      navItems[1].querySelector('.nav-link').textContent = translations[lang].signup;
-      navItems[2].querySelector('.nav-link').textContent = translations[lang].login;
-    }
+    navItems[0].querySelector('.nav-link').textContent = translations[lang].about;
+    navItems[1].querySelector('.nav-link').textContent = translations[lang].signup;
+    navItems[2].querySelector('.nav-link').textContent = translations[lang].login;
+    document.querySelector('.cart-link').textContent = translations[lang].cart;
 
-    document.querySelectorAll('.button-text').forEach(btn => {
-      btn.textContent = translations[lang].buy;
-    });
+    document.querySelectorAll('.button-text').forEach(btn => btn.textContent = translations[lang].buy);
 
     if (loadMoreBtn) loadMoreBtn.textContent = translations[lang].loadmore;
 
@@ -202,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginBtn) loginBtn.textContent = translations[lang].loginbtn;
   }
 
+  // Language switcher
   langMenu.querySelectorAll('[data-lang]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -212,35 +121,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  function openModal(id) {
-    document.getElementById(id).style.display = "flex";
-  }
-  function closeModal(id) {
-    document.getElementById(id).style.display = "none";
-  }
-  document.getElementById("open-signup").addEventListener("click", e => {
-    e.preventDefault();
-    openModal("signup-modal");
-  });
-  document.getElementById("open-login").addEventListener("click", e => {
-    e.preventDefault();
-    openModal("login-modal");
-  });
-  document.querySelectorAll(".close-modal").forEach(btn => {
-    btn.addEventListener("click", () => closeModal(btn.dataset.close));
-  });
-  document.querySelectorAll(".modal-overlay").forEach(overlay => {
-    overlay.addEventListener("click", e => {
-      if (e.target === overlay) closeModal(overlay.id);
-    });
-  });
-});
-window.addEventListener('DOMContentLoaded', () => {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookies');
-    // Обробник кліку на кнопку
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true'); // зберігаємо вибір
-        cookieBanner.style.display = 'none'; // ховаємо банер
-    });
+  // Modals
+  function openModal(id){ document.getElementById(id).style.display="flex"; }
+  function closeModal(id){ document.getElementById(id).style.display="none"; }
+
+  document.getElementById("open-signup").addEventListener("click", e=>{ e.preventDefault(); openModal("signup-modal"); });
+  document.getElementById("open-login").addEventListener("click", e=>{ e.preventDefault(); openModal("login-modal"); });
+  document.querySelectorAll(".close-modal").forEach(btn=> btn.addEventListener("click", ()=>closeModal(btn.dataset.close)));
+  document.querySelectorAll(".modal-overlay").forEach(overlay => overlay.addEventListener("click", e=>{ if(e.target===overlay) closeModal(overlay.id); }));
+
+  // Cookies banner
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  if (localStorage.getItem('cookiesAccepted') !== 'true') cookieBanner.style.display = 'flex';
+  acceptBtn.addEventListener('click', ()=>{ localStorage.setItem('cookiesAccepted','true'); cookieBanner.style.display='none'; });
 });
