@@ -43,46 +43,44 @@ document.addEventListener('DOMContentLoaded', () => {
         { code: 'es', label: 'ES' },
         { code: 'it', label: 'IT' }
     ];
-const loadMoreBtn = document.getElementById("load-more");
-const loader = document.getElementById("loader");
-const mainContent = document.querySelector(".main-content");
 
-loadMoreBtn.addEventListener("click", () => {
-  loadMoreBtn.style.display = "none";
-  loader.style.display = "block";
+    const loadMoreBtn = document.getElementById("load-more");
+    const loader = document.getElementById("loader");
+    const mainContent = document.querySelector(".main-content");
 
-  
-  setTimeout(() => {
-    loader.style.display = "none";
+    loadMoreBtn.addEventListener("click", () => {
+      loadMoreBtn.style.display = "none";
+      loader.style.display = "block";
 
-    
-    for (let i = 1; i <= 3; i++) {
-      const newCard = document.createElement("div");
-      newCard.classList.add("product-card");
-      newCard.innerHTML = `
-        <img src="Shady${i}.webp" alt="New Product ${i}">
-        <div class="comic-brutal-button-container">
-          <button class="comic-brutal-button">
-            <div class="button-inner">
-              <a href="buy5.html" class="buy5">
-                <span class="button-text">buy</span>
-              </a>
-              <div class="halftone-overlay"></div>
-              <div class="ink-splatter"></div>
+      setTimeout(() => {
+        loader.style.display = "none";
+
+        for (let i = 1; i <= 3; i++) {
+          const newCard = document.createElement("div");
+          newCard.classList.add("product-card");
+          newCard.innerHTML = `
+            <img src="Shady${i}.webp" alt="New Product ${i}">
+            <div class="comic-brutal-button-container">
+              <button class="comic-brutal-button">
+                <div class="button-inner">
+                  <a href="buy5.html" class="buy5">
+                    <span class="button-text">buy</span>
+                  </a>
+                  <div class="halftone-overlay"></div>
+                  <div class="ink-splatter"></div>
+                </div>
+                <div class="button-shadow"></div>
+                <div class="button-frame"></div>
+              </button>
             </div>
-            <div class="button-shadow"></div>
-            <div class="button-frame"></div>
-          </button>
-        </div>
-      `;
-      mainContent.appendChild(newCard);
-    }
+          `;
+          mainContent.appendChild(newCard);
+        }
 
-    loadMoreBtn.style.display = "inline-block"; 
-  }, 2000);
-});
+        loadMoreBtn.style.display = "inline-block"; 
+      }, 2000);
+    });
 
-    
     const translations = {
         en: {
             catalogue: 'CATALOGUE',
@@ -93,7 +91,6 @@ loadMoreBtn.addEventListener("click", () => {
             signup: 'SIGN UP',
             login: 'LOGIN',
             buy: 'BUY'
-            
         },
         ua: {
             catalogue: 'КАТАЛОГ',
@@ -104,7 +101,6 @@ loadMoreBtn.addEventListener("click", () => {
             signup: 'РЕЄСТРАЦІЯ',
             login: 'ВХІД',
             buy: 'КУПИТИ'
-            
         },
         ru: {
             catalogue: 'КАТАЛОГ',
@@ -158,7 +154,6 @@ loadMoreBtn.addEventListener("click", () => {
         }
     };
 
-    
     langMenu.innerHTML = '';
     availableLangs.forEach(lang => {
         const li = document.createElement('li');
@@ -171,7 +166,6 @@ loadMoreBtn.addEventListener("click", () => {
     });
 
     function switchLanguage(lang) {
-        
         document.querySelector('.catalogue-link').textContent = translations[lang].catalogue;
         const catalogueMenu = document.querySelector('.catalogue-link').parentElement.querySelector('.dropdown-menu');
         catalogueMenu.children[0].querySelector('a').textContent = translations[lang].tshirts;
@@ -185,19 +179,18 @@ loadMoreBtn.addEventListener("click", () => {
             navItems[2].querySelector('.nav-link').textContent = translations[lang].login;
         }
         
-        document.querySelectorAll('.buy-button').forEach(btn => {
+        document.querySelectorAll('.button-text').forEach(btn => {
             btn.textContent = translations[lang].buy;
         });
     }
 
-        
-        langMenu.querySelectorAll('[data-lang]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lang = e.target.dataset.lang;
-                currentLangLink.textContent = lang.toUpperCase();
-                switchLanguage(lang);
-                languageSwitcher.classList.remove('show');
-            });
+    langMenu.querySelectorAll('[data-lang]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = e.target.dataset.lang;
+            currentLangLink.textContent = lang.toUpperCase();
+            switchLanguage(lang);
+            languageSwitcher.classList.remove('show');
         });
     });
+});
