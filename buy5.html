@@ -6,7 +6,7 @@
   <title>Buy Product</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
-  <script src="script.js"></script>
+  <script src="scriptt.js"></script>
 
   <style>
     body {
@@ -33,33 +33,17 @@
       gap: 20px;
     }
     .product-details img {
-      max-width: 300px;
+      max-width: 250px;
       border-radius: 10px;
-    }
-    .thumbs {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
       margin-top: 10px;
     }
-    .thumbs img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border: 2px solid transparent;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    .thumbs img:hover,
-    .thumbs img.active {
-      border: 2px solid #333;
-    }
-    
     footer {
       margin: 20px 0;
       text-align: center;
+    }
+    select {
+      padding: 8px;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -68,8 +52,8 @@
     <div class="logo">CLOTHES SHOP</div>
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">HOME</a></li>
-        <li class="nav-item"><a href="cart.html" class="nav-link" data-i18n="cart">CART</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
         <li class="nav-item dropdown language-switcher">
           <a href="#" class="nav-link">EN</a>
           <ul class="dropdown-menu">
@@ -84,8 +68,36 @@
   <main>
     <div class="product-container">
       <div class="product-details">
-        <img id="main-img" src="Basic_E-shirt_Male_Model (1).webp" alt="Product">
+
+        <label for="product-select">Choose a product:</label>
+        <select id="product-select">
+          <option data-img="Basic_E-shirt_Male_Model (1).webp" value="40">Basic T-shirt - $40</option>
+          <option data-img="Casket_Front.webp" value="35">Casket T-shirt - $35</option>
+          <option data-img="EmENCORE0443P01.webp" value="38">Encore Shirt 1 - $38</option>
+          <option data-img="EmENCORE0587P01.webp" value="42">Encore Shirt 2 - $42</option>
+          <option data-img="Shady-25_033.webp" value="40">Shady 25 T-shirt - $40</option>
+          <option data-img="Shady2.webp" value="39">Shady T-shirt - $39</option>
+          <option data-img="Kamikaze_Green_Hoodie_Male_Model_Front_1024x1024_f9d40831-2f58-4a08-a853-eb1f057ea1b8.webp" value="55">Kamikaze Hoodie - $55</option>
+          <option data-img="The_Way_I_Am_Hoodie_Maroon_Male_Model.webp" value="50">The Way I Am Hoodie 1 - $50</option>
+          <option data-img="The_Way_I_Am_Hoodie_Navy_Male_Model.webp" value="38">The Way I Am Hoodie 2 - $38</option>
+          <option data-img="Lyric_Hoode_-_Front_-_Back.webp" value="70">Lyric Hoodie - $70</option>
+          <option data-img="PhotoHoodie_-_Front_-_Back.webp" value="60">Photo Hoodie - $60</option>
+          <option data-img="LARGE-EM_0013_NW-LOGO--copy-10.webp" value="65">Large Hoodie - $65</option>
+          <option data-img="Angermangement-Tee_mock.webp" value="45">Anger Management Tee - $45</option>
+          <option data-img="Bloody_Chainsaw_Tee_White_-_Justin.webp" value="48">Bloody Chainsaw Tee White - $48</option>
+          <option data-img="Bloody_Chainsaw_Tee_-_Justin.webp" value="47">Bloody Chainsaw Tee - $47</option>
+          <option data-img="E-Kneel-Tee_mock.webp" value="44">E-Kneel Tee - $44</option>
+          <option data-img="Eminem-Graphic-mock.webp" value="52">Eminem Graphic Tee - $52</option>
+          <option data-img="EMTV-Design_mock.webp" value="43">EMTV Design Tee - $43</option>
+          <option data-img="E-Spotlight_mock.webp" value="46">E-Spotlight Tee - $46</option>
+          <option data-img="Photo_T-Shirt_-_Justin.webp" value="49">Photo T-shirt - $49</option>
+          <option data-img="I_m_The_Real_Slim_Shady_T-shirt_Female_Model.webp" value="41">I’m The Real Slim Shady Tee - $41</option>
+          <option data-img="My_Name_Is_Crop_-_Gina.webp" value="39">My Name Is Crop Tee - $39</option>
+          <option data-img="Graphic_Lean_Tee_-_Clevin.webp" value="42">Graphic Lean Tee - $42</option>
+        </select>
+
         <h1 id="product-name">Basic T-shirt</h1>
+        <img id="product-img" src="Basic_E-shirt_Male_Model (1).webp" alt="Product">
         <h2 id="product-price">$40</h2>
 
         <div class="size-selector">
@@ -94,10 +106,11 @@
           <button>XL</button>
           <button>2XL</button>
         </div>
-<div class="quantity-selector" style="margin-top:10px;">
-  <label for="quantity">Quantity:</label>
-  <input type="number" id="quantity" value="1" min="1" style="width:60px; padding:5px; text-align:center;">
-</div>
+
+        <div class="quantity-selector" style="margin-top:10px;">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" value="1" min="1" style="width:60px; padding:5px; text-align:center;">
+        </div>
 
         <div class="comic-brutal-button-container" style="margin-top:20px;">
           <button class="comic-brutal-button add-to-cart-btn">
@@ -111,22 +124,6 @@
           </button>
         </div>
       </div>
-
-      <div class="thumbs">
-        <img src="Basic_E-shirt_Male_Model (1).webp" data-name="Basic T-shirt" data-price="40" class="active">
-        <img src="Casket_Front.webp" data-name="Casket T-shirt" data-price="35">
-        <img src="EmENCORE0443P01.webp" data-name="Encore Shirt 1" data-price="38">
-        <img src="EmENCORE0587P01.webp" data-name="Encore Shirt 2" data-price="42">
-        <img src="Shady-25_033.webp" data-name="Shady 25 T-shirt" data-price="40">
-        <img src="Shady2.webp" data-name="Shady T-shirt" data-price="39">
-        <img src="Kamikaze_Green_Hoodie_Male_Model_Front_1024x1024_f9d40831-2f58-4a08-a853-eb1f057ea1b8.webp" data-name="kamikazehoodie" data-price="55" class="active">
-        <img src="The_Way_I_Am_Hoodie_Maroon_Male_Model.webp" data-name="theway1" data-price="50">
-        <img src="The_Way_I_Am_Hoodie_Navy_Male_Model.webp" data-name="tway2" data-price="38">
-        <img src="Lyric_Hoode_-_Front_-_Back.webp" data-name="lyrichoode" data-price="70">
-        <img src="PhotoHoodie_-_Front_-_Back.webp" data-name="photohoodie" data-price="60">
-        <img src="LARGE-EM_0013_NW-LOGO--copy-10.webp" data-name="Large Hoodie" data-price="65">
-
-      </div>
     </div>
   </main>
 
@@ -137,82 +134,73 @@
   </footer>
 
   <script>
-  let selectedSize = null;
-  let basePrice = 40; 
+    let selectedSize = null;
+    let basePrice = 40;
 
-  
-  function getSizeExtra(size) {
-    switch (size) {
-      case "M": return 5;
-      case "XL": return 10;
-      case "2XL": return 15;
-      default: return 0; 
-    }
-  }
-
-  function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    document.querySelector('.cart-items').textContent = `Items in Cart: ${cart.length}`;
-  }
-  updateCartCount();
-
-  
-  document.querySelectorAll('.size-selector button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.size-selector button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedSize = btn.textContent;
-
-      // Оновлюємо ціну
-      const activeThumb = document.querySelector('.thumbs img.active');
-      basePrice = parseFloat(activeThumb.dataset.price);
-      const newPrice = basePrice + getSizeExtra(selectedSize);
-      document.getElementById("product-price").textContent = `$${newPrice}`;
-    });
-  });
-
-  // Зміна товару при кліку на мініатюру
-  document.querySelectorAll('.thumbs img').forEach(img => {
-    img.addEventListener('click', () => {
-      document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
-      img.classList.add('active');
-      document.getElementById("main-img").src = img.src;
-      document.getElementById("product-name").textContent = img.dataset.name;
-      basePrice = parseFloat(img.dataset.price);
-
-      const newPrice = basePrice + getSizeExtra(selectedSize);
-      document.getElementById("product-price").textContent = `$${newPrice}`;
-    });
-  });
-
-  
-  document.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-    if (!selectedSize) {
-      alert('Please select a size before adding to cart!');
-      return;
+    function getSizeExtra(size) {
+      switch (size) {
+        case "M": return 5;
+        case "XL": return 10;
+        case "2XL": return 15;
+        default: return 0; 
+      }
     }
 
-    const finalPrice = basePrice + getSizeExtra(selectedSize);
-
-    const quantity = parseInt(document.getElementById("quantity").value) || 1;
-
-const product = {
-  name: document.getElementById("product-name").textContent,
-  price: finalPrice,
-  img: document.getElementById("main-img").src,
-  size: selectedSize,
-  quantity: quantity
-};
-
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
-cart.push(product);
-localStorage.setItem('cart', JSON.stringify(cart));
-
-
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.querySelector('.cart-items').textContent = `Items in Cart: ${cart.length}`;
+    }
     updateCartCount();
-    
-  });
-</script>
 
+    // вибір розміру
+    document.querySelectorAll('.size-selector button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-selector button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedSize = btn.textContent;
+
+        const select = document.getElementById("product-select");
+        basePrice = parseFloat(select.value);
+        const newPrice = basePrice + getSizeExtra(selectedSize);
+        document.getElementById("product-price").textContent = `$${newPrice}`;
+      });
+    });
+
+    // вибір товару
+    document.getElementById("product-select").addEventListener("change", (e) => {
+      const selectedOption = e.target.options[e.target.selectedIndex];
+      document.getElementById("product-name").textContent = selectedOption.text.split(" - $")[0];
+      document.getElementById("product-img").src = selectedOption.dataset.img;
+      basePrice = parseFloat(selectedOption.value);
+
+      const newPrice = basePrice + getSizeExtra(selectedSize);
+      document.getElementById("product-price").textContent = `$${newPrice}`;
+    });
+
+    // додавання в корзину
+    document.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+      if (!selectedSize) {
+        alert('Please select a size before adding to cart!');
+        return;
+      }
+
+      const finalPrice = basePrice + getSizeExtra(selectedSize);
+      const quantity = parseInt(document.getElementById("quantity").value) || 1;
+
+      const product = {
+        name: document.getElementById("product-name").textContent,
+        price: finalPrice,
+        img: document.getElementById("product-img").src,
+        size: selectedSize,
+        quantity: quantity
+      };
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      updateCartCount();
+    });
+  </script>
 </body>
 </html>
