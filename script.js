@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dropdown functionality
+    
     const dropdowns = document.querySelectorAll('.dropdown');
 
     dropdowns.forEach(dropdown => {
@@ -8,18 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            // Close other open menus
+            
             dropdowns.forEach(otherDropdown => {
                 if (otherDropdown !== dropdown) {
                     otherDropdown.classList.remove('show');
                 }
             });
-            // Toggle current menu
+            
             dropdown.classList.toggle('show');
         });
     });
 
-    // Close dropdowns when clicking outside
+    
     window.addEventListener('click', (e) => {
         dropdowns.forEach(dropdown => {
             if (!dropdown.contains(e.target)) {
@@ -158,7 +158,7 @@ loadMoreBtn.addEventListener("click", () => {
         }
     };
 
-    // Генерируем пункты меню языков
+    
     langMenu.innerHTML = '';
     availableLangs.forEach(lang => {
         const li = document.createElement('li');
@@ -171,26 +171,26 @@ loadMoreBtn.addEventListener("click", () => {
     });
 
     function switchLanguage(lang) {
-        // Меню каталог
+        
         document.querySelector('.catalogue-link').textContent = translations[lang].catalogue;
         const catalogueMenu = document.querySelector('.catalogue-link').parentElement.querySelector('.dropdown-menu');
         catalogueMenu.children[0].querySelector('a').textContent = translations[lang].tshirts;
         catalogueMenu.children[1].querySelector('a').textContent = translations[lang].hoodies;
         catalogueMenu.children[2].querySelector('a').textContent = translations[lang].hats;
-        // Остальные пункты меню
+        
         const navItems = document.querySelectorAll('.nav-list .nav-item:not(.dropdown)');
         if (navItems.length >= 3) {
             navItems[0].querySelector('.nav-link').textContent = translations[lang].about;
             navItems[1].querySelector('.nav-link').textContent = translations[lang].signup;
             navItems[2].querySelector('.nav-link').textContent = translations[lang].login;
         }
-        // Кнопки BUY
+        
         document.querySelectorAll('.buy-button').forEach(btn => {
             btn.textContent = translations[lang].buy;
         });
     }
 
-        // Назначаем обработчики для языков
+        
         langMenu.querySelectorAll('[data-lang]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
