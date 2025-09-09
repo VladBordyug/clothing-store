@@ -152,7 +152,7 @@
     }
     updateCartCount();
 
-    // вибір розміру
+    
     document.querySelectorAll('.size-selector button').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.size-selector button').forEach(b => b.classList.remove('active'));
@@ -166,7 +166,7 @@
       });
     });
 
-    // вибір товару
+    
     document.getElementById("product-select").addEventListener("change", (e) => {
       const selectedOption = e.target.options[e.target.selectedIndex];
       document.getElementById("product-name").textContent = selectedOption.text.split(" - $")[0];
@@ -177,7 +177,7 @@
       document.getElementById("product-price").textContent = `$${newPrice}`;
     });
 
-    // додавання в корзину
+    
     document.querySelector('.add-to-cart-btn').addEventListener('click', () => {
       if (!selectedSize) {
         alert('Please select a size before adding to cart!');
