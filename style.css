@@ -1276,3 +1276,68 @@ body {
   color: #fff;
   transform: translate3d(0, 0, 1em);
 }
+.nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(10, 26, 58, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 12px 0;
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: all 0.35s ease;
+  font-family: 'Fira Code', monospace;
+}
+
+.nav .dropdown-menu li {
+  list-style: none;
+}
+
+.nav .dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s ease, padding-left 0.3s ease;
+  border-radius: 8px;
+}
+
+.nav .dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  padding-left: 26px;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.catalogue-link {
+  position: relative;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.catalogue-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #1e90ff;
+  transition: width 0.3s ease;
+}
+
+.catalogue-link:hover::after {
+  width: 100%;
+}
