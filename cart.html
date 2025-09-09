@@ -195,7 +195,14 @@
     </a>
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><a href="#" class="nav-link">CATALOGUE</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link catalogue-link" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown(event)">CATALOGUE</a>
+          <ul class="dropdown-menu" style="display: none;">
+            <li><a href="index.html">T-shirts</a></li>
+            <li><a href="hoodies.html">Hoodies</a></li>
+            <li><a href="hats.html">Hats</a></li>
+          </ul>
+        </li>
         <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">SIGN UP</a></li>
         <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">LOGIN</a></li>
         <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
@@ -299,6 +306,16 @@
   </div>
 
   <script>
+    // Dropdown toggle for catalogue
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const link = event.currentTarget;
+      const dropdown = link.nextElementSibling;
+      const expanded = link.getAttribute('aria-expanded') === 'true';
+      link.setAttribute('aria-expanded', !expanded);
+      dropdown.style.display = expanded ? 'none' : 'block';
+    }
+
     function loadCart() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const tbody = document.querySelector('#cart-table tbody');
@@ -320,7 +337,7 @@
 
   totalDiv.textContent = `Total: $${total}`;
 
-  // Додаємо слухачі на кнопки видалення
+  
   document.querySelectorAll('.remove-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = btn.dataset.index;
@@ -385,7 +402,7 @@ const citySelect = document.getElementById("city");
 
 const ukraineCities = [
   "Київ", "Львів", "Харків", "Одеса", "Дніпро", 
-  "Запоріжжя", "Вінниця", "Івано-Франківськ", "Чернівці", "Тернопіль"
+  "Запоріжжя", "Вінниця", "Івано-Франківськ", "Чернівці", "Тернопіль", "Миргород", "Полтава", "Суми", "Житомир", "Рівне", "Чернігів", "Хмельницький", "Кропивницький", "Черкаси", "Ужгород", "Мукачево", "Бердянськ", "Маріуполь", "Миколаїв", "Херсон", "Біла Церква", "Бровари", "Кам'янець-Подільський", "Кременчук", "Луцьк", "Нікополь", "Олександрія", "Павлоград", "Сєвєродонецьк", "Слов'янськ", "Тернівка", "Трускавець", "Фастів", "Шостка", "Яремче", "Бахмут", "Берегове", "Бориспіль", "Васильків", "Володимир-Волинський", "Горішні Плавні", "Дрогобич", "Євпаторія", "Жовті Води", "Золотоноша", "Калуш", "Керч", "Козятин", "Коростень", "Коростишів", "Костянтинівка", "Краматорськ", "Лисичанськ", "Лозова", "Лубни", "Макіївка", "Мелітополь", "Ніжин", "Новомосковськ", "Новоукраїнка", "Переяслав", "Покровськ", "Прилуки", "Славутич", "Старокостянтинів", "Стрий", "Тальне", "Теребовля", "Тетіїв", "Умань", "Феодосія", "Часів Яр", "Шепетівка", "Южне"
 ];
 
 function selectCountry(country) {
