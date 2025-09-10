@@ -526,14 +526,14 @@ if (translations[savedLang]) {
   const confirmOrderBtn = document.getElementById("confirm-order");
 
   confirmOrderBtn.addEventListener("click", () => {
-    // Можна додати перевірку, чи всі потрібні поля заповнені
+
     alert("Дякуємо! Ваше замовлення підтверджено ✅");
     
-    // За бажанням, після alert можна закрити модальне вікно
+ 
     const modal = document.getElementById("checkout-modal");
     modal.style.display = "none";
 
-    // І очистити кошик
+
     localStorage.removeItem("cart");
     loadCart();
   });
