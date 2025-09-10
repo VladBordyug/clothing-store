@@ -3,37 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EMINEM</title>
+  <title>EMINEM shop</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/avif" href="header_logo_x300_x300_d15f5425-c546-4e37-a4b4-3ebda5c346c5.avif">
+  <style>
+    .modal-overlay { 
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: rgba(10, 25, 47, 0.9); 
+        align-items: center; 
+        justify-content: center; 
+        z-index: 999; 
+    }
+    .modal { 
+        background: #0d1a2f; 
+        color: #e0e6f0; 
+        padding: 40px; 
+        border-radius: 16px; 
+        width: 400px; 
+        text-align: center; 
+        position: relative; 
+        box-shadow: 0 0 25px rgba(0, 115, 255, 0.5); 
+        font-family: 'Fira Code', monospace; 
+    }
+    .modal h2 { 
+        margin-bottom: 25px; 
+        font-size: 24px; 
+        letter-spacing: 1px; 
+        color: #3f9efc; 
+    }
+    .modal input { 
+        width: 100%; 
+        padding: 12px; 
+        margin: 12px 0; 
+        border: 2px solid #203554; 
+        border-radius: 8px; 
+        background: #091220; 
+        color: #e0e6f0; 
+        font-size: 14px; 
+    }
+    .modal button { 
+        margin-top: 20px; 
+        width: 100%; 
+        padding: 14px; 
+        background: #3f9efc; 
+        border: none; 
+        border-radius: 10px; 
+        color: #ffffff; 
+        font-size: 16px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: 0.3s; 
+    }
+    .modal button:hover { 
+        background: #0077e6; 
+    }
+    .close-modal { 
+        position: absolute; 
+        top: 12px; 
+        right: 18px; 
+        font-size: 22px; 
+        cursor: pointer; 
+        color: #b0c4de; 
+    }
+    .close-modal:hover { 
+        color: #ffffff; 
+    }
+</style>
 </head>
 <body>
   <header class="header">
     <a href="index.html">
-    <div class="logo">EMINEM SHOP</div>
+      <div class="logo">EMINEM SHOP</div>
     </a>
     <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item dropdown">
-          <a href="javascript:void(0);" class="nav-link catalogue-link">CATALOGUE</a>
+          <a href="#" class="nav-link catalogue-link">CATALOGUE</a>
           <ul class="dropdown-menu">
             <li><a href="index.html">T-shirts</a></li>
             <li><a href="hoodies.html">Hoodies</a></li>
             <li><a href="hats.html">Hats</a></li>
+            <li><a href="jackets.html">Jackets</a></li>
           </ul>
         </li>
-        
-        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">SIGN UP</a></li>
-        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">LOGIN</a></li>
-        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
+        <li class="nav-item"><a href="#" id="open-signup" class="nav-link">SIGN UP</a></li>
+        <li class="nav-item"><a href="#" id="open-login" class="nav-link">LOGIN</a></li>
+        <li class="nav-item"><a href="cart.html" class="nav-link cart-link">CART</a></li>
         <li class="nav-item dropdown language-switcher">
           <a href="#" class="nav-link">EN</a>
-          <ul class="dropdown-menu">
-            <li><a href="#" data-lang="en">EN</a></li>
-            <li><a href="#" data-lang="ua">UA</a></li>
-          </ul>
+          <ul class="dropdown-menu"></ul>
         </li>
       </ul>
     </nav>
@@ -89,7 +155,7 @@
       </div>
     </div>
     <div class="product-card">
-      <img src="The_Way_I_Am_Hoodie_Maroon_Male_Model.webp" alt="Product Image 1">
+      <img src="The_Way_I_Am_Hoodie_Navy_Male_Model.webp" alt="Product Image 1">
       <div class="comic-brutal-button-container">
         <button class="comic-brutal-button">
           <div class="button-inner">
@@ -105,7 +171,7 @@
       </div>
     </div>
     <div class="product-card">
-      <img src="The_Way_I_Am_Hoodie_Navy_Male_Model.webp" alt="Product Image 2">
+      <img src="The_Way_I_Am_Hoodie_Maroon_Male_Model.webp" alt="Product Image 2">
       <div class="comic-brutal-button-container">
         <button class="comic-brutal-button">
           <div class="button-inner">
@@ -121,7 +187,7 @@
       </div>
     </div>
     <div class="product-card">
-      <img src="PhotoHoodie_-_Front_-_Back.webp" alt="Product Image 3">
+      <img src="RECOVERY_LS.webp" alt="Product Image 3">
       <div class="comic-brutal-button-container">
         <button class="comic-brutal-button">
           <div class="button-inner">
@@ -136,40 +202,59 @@
         </button>
       </div>
     </div>
+      
   </main>
-<script src="script.js"></script>
-  <div id="cookie-banner" class="cookie-banner">
-  <p>🍪 Ми використовуємо cookies, щоб зробити сайт кращим. <a href="#">Дізнатися більше</a></p>
-  <button id="accept-cookies">Прийняти</button>
-</div>
-<script>
-  const banner = document.getElementById("cookie-banner");
-  const btn = document.getElementById("accept-cookies");
 
   
-
-  btn.addEventListener("click", () => {
-    localStorage.setItem("cookiesAccepted", "true");
-    banner.style.display = "none";
-  });
-</script>
-<div class="load-more-container">
-  <button id="load-more" class="load-more-btn">Показати більше</button>
-  <div id="loader" class="loader" style="display:none;"></div>
-</div>
-<footer class="site-footer">
-  <div class="footer-container">
-    <p class="copyright-text">&copy; 2025 EMINEM SHOP. All Rights Reserved. by VladB</p>
-    <div class="social-icons">
-      <a href="#" target="_blank" title="Telegram">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/800px-Telegram_logo.svg.png" alt="Telegram">
-      </a>
-      <a href="#" target="_blank" title="Instagram">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      </a>
+  <div class="modal-overlay" id="signup-modal">
+    <div class="modal">
+      <span class="close-modal" data-close="signup-modal">&times;</span>
+      <h2 class="signup-title">Sign Up</h2>
+      <input type="text" placeholder="Username">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button class="signup-btn">Register</button>
     </div>
   </div>
-</footer>
+
+  
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <span class="close-modal" data-close="login-modal">&times;</span>
+      <h2 class="login-title">Login</h2>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button class="login-btn">Login</button>
+    </div>
+  </div>
+
+  <div id="cookie-banner" class="cookie-banner">
+    <p>🍪 Ми використовуємо cookies, щоб зробити сайт кращим. <a href="#">Дізнатися більше</a></p>
+    <button id="accept-cookies">Прийняти</button>
+  </div>
+
+  
+  <div class="load-more-container">
+    <button id="load-more" class="load-more-btn">Показати більше</button>
+    <div id="loader" class="loader" style="display:none;"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="copyright-text">&copy; 2025 EMINEM SHOP. All Rights Reserved. by VladB</p>
+      <div class="social-icons">
+        <a href="#" target="_blank" title="Telegram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/800px-Telegram_logo.svg.png" alt="Telegram">
+        </a>
+        <a href="#" target="_blank" title="Instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
   
 </body>
+
 </html>
