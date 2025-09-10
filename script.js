@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     it: { catalogue:'CATALOGO', tshirts:'Magliette', hoodies:'Felpe', hats:'Cappelli', jackets:'Giacche', about:'CHI SIAMO', signup:'REGISTRATI', login:'ACCEDI', buy:'ACQUISTA', loadmore:'MOSTRA ALTRO', registerbtn:'Registrati', loginbtn:'Accedi', cart:'CARRELLO' }
   };
 
-  // Populate language menu
+
   langMenu.innerHTML = '';
   availableLangs.forEach(lang => {
     const li = document.createElement('li');
@@ -83,45 +83,55 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function switchLanguage(lang) {
-    document.querySelector('.catalogue-link').textContent = translations[lang].catalogue;
-    const catalogueMenu = document.querySelector('.catalogue-link').parentElement.querySelector('.dropdown-menu');
-    catalogueMenu.children[0].querySelector('a').textContent = translations[lang].tshirts;
-    catalogueMenu.children[1].querySelector('a').textContent = translations[lang].hoodies;
-    catalogueMenu.children[2].querySelector('a').textContent = translations[lang].hats;
-    catalogueMenu.children[3].querySelector('a').textContent = translations[lang].jackets;
+  document.querySelector('.catalogue-link').textContent = translations[lang].catalogue;
+  const catalogueMenu = document.querySelector('.catalogue-link').parentElement.querySelector('.dropdown-menu');
+  catalogueMenu.children[0].querySelector('a').textContent = translations[lang].tshirts;
+  catalogueMenu.children[1].querySelector('a').textContent = translations[lang].hoodies;
+  catalogueMenu.children[2].querySelector('a').textContent = translations[lang].hats;
+  catalogueMenu.children[3].querySelector('a').textContent = translations[lang].jackets;
 
-    const navItems = document.querySelectorAll('.nav-list .nav-item:not(.dropdown)');
-    navItems[0].querySelector('.nav-link').textContent = translations[lang].about;
-    navItems[1].querySelector('.nav-link').textContent = translations[lang].signup;
-    navItems[2].querySelector('.nav-link').textContent = translations[lang].login;
-    document.querySelector('.cart-link').textContent = translations[lang].cart;
 
-    document.querySelectorAll('.button-text').forEach(btn => btn.textContent = translations[lang].buy);
+  document.getElementById('open-signup').textContent = translations[lang].signup;
+  document.getElementById('open-login').textContent = translations[lang].login;
+  document.querySelector('.cart-link').textContent = translations[lang].cart;
 
-    if (loadMoreBtn) loadMoreBtn.textContent = translations[lang].loadmore;
+  document.querySelectorAll('.button-text').forEach(btn => btn.textContent = translations[lang].buy);
 
-    const signupTitle = document.querySelector('.signup-title');
-    const loginTitle = document.querySelector('.login-title');
-    const signupBtn = document.querySelector('.signup-btn');
-    const loginBtn = document.querySelector('.login-btn');
-    if (signupTitle) signupTitle.textContent = translations[lang].signup;
-    if (loginTitle) loginTitle.textContent = translations[lang].login;
-    if (signupBtn) signupBtn.textContent = translations[lang].registerbtn;
-    if (loginBtn) loginBtn.textContent = translations[lang].loginbtn;
-  }
+  if (loadMoreBtn) loadMoreBtn.textContent = translations[lang].loadmore;
 
-  // Language switcher
-  langMenu.querySelectorAll('[data-lang]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const lang = e.target.dataset.lang;
-      currentLangLink.textContent = lang.toUpperCase();
-      switchLanguage(lang);
-      languageSwitcher.classList.remove('show');
-    });
+  const signupTitle = document.querySelector('.signup-title');
+  const loginTitle = document.querySelector('.login-title');
+  const signupBtn = document.querySelector('.signup-btn');
+  const loginBtn = document.querySelector('.login-btn');
+  if (signupTitle) signupTitle.textContent = translations[lang].signup;
+  if (loginTitle) loginTitle.textContent = translations[lang].login;
+  if (signupBtn) signupBtn.textContent = translations[lang].registerbtn;
+  if (loginBtn) loginBtn.textContent = translations[lang].loginbtn;
+}
+
+
+  
+langMenu.querySelectorAll('[data-lang]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const lang = e.target.dataset.lang;
+
+
+    localStorage.setItem('selectedLang', lang);
+
+    currentLangLink.textContent = lang.toUpperCase();
+    switchLanguage(lang);
+    languageSwitcher.classList.remove('show');
   });
+});
 
-  // Modals
+
+const savedLang = localStorage.getItem('selectedLang');
+if (savedLang && translations[savedLang]) {
+  currentLangLink.textContent = savedLang.toUpperCase();
+  switchLanguage(savedLang);
+}
+
   function openModal(id){ document.getElementById(id).style.display="flex"; }
   function closeModal(id){ document.getElementById(id).style.display="none"; }
 
@@ -130,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll(".close-modal").forEach(btn=> btn.addEventListener("click", ()=>closeModal(btn.dataset.close)));
   document.querySelectorAll(".modal-overlay").forEach(overlay => overlay.addEventListener("click", e=>{ if(e.target===overlay) closeModal(overlay.id); }));
 
-  // Cookies banner
+
   const cookieBanner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('accept-cookies');
   if (localStorage.getItem('cookiesAccepted') !== 'true') cookieBanner.style.display = 'flex';
