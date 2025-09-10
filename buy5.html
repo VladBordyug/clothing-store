@@ -5,10 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buy Product</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
-  <script src="scriptt.js"></script>
-
+  <link rel="icon" type="image/avif" href="header_logo_x300_x300_d15f5425-c546-4e37-a4b4-3ebda5c346c5.avif">
   <style>
+    /* ... (CSS для модальних вікон з index.html) ... */
+    .modal-overlay { 
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: rgba(10, 25, 47, 0.9); 
+        align-items: center; 
+        justify-content: center; 
+        z-index: 999; 
+    }
+    .modal { 
+        background: #0d1a2f; 
+        color: #e0e6f0; 
+        padding: 40px; 
+        border-radius: 16px; 
+        width: 400px; 
+        text-align: center; 
+        position: relative; 
+        box-shadow: 0 0 25px rgba(0, 115, 255, 0.5); 
+        font-family: 'Fira Code', monospace; 
+    }
+    .modal h2 { 
+        margin-bottom: 25px; 
+        font-size: 24px; 
+        letter-spacing: 1px; 
+        color: #3f9efc; 
+    }
+    .modal input { 
+        width: 100%; 
+        padding: 12px; 
+        margin: 12px 0; 
+        border: 2px solid #203554; 
+        border-radius: 8px; 
+        background: #091220; 
+        color: #e0e6f0; 
+        font-size: 14px; 
+    }
+    .modal button { 
+        margin-top: 20px; 
+        width: 100%; 
+        padding: 14px; 
+        background: #3f9efc; 
+        border: none; 
+        border-radius: 10px; 
+        color: #ffffff; 
+        font-size: 16px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: 0.3s; 
+    }
+    .modal button:hover { 
+        background: #0077e6; 
+    }
+    .close-modal { 
+        position: absolute; 
+        top: 12px; 
+        right: 18px; 
+        font-size: 22px; 
+        cursor: pointer; 
+        color: #b0c4de; 
+    }
+    .close-modal:hover { 
+        color: #ffffff; 
+    }
+  </style>
+  <script src="scriptt.js"></script>
+  <style>
+    /* ... (існуючий CSS для buy5.html) ... */
     body {
       font-family: 'Fira Code', monospace;
       margin: 0;
@@ -50,27 +122,32 @@
 <body>
   <header class="header">
     <a href="index.html">
-    <div class="logo">CLOTHES SHOP</div>
+      <div class="logo">EMINEM SHOP</div>
     </a>
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
-        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link catalogue-link">CATALOGUE</a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">T-shirts</a></li>
+            <li><a href="hoodies.html">Hoodies</a></li>
+            <li><a href="hats.html">Hats</a></li>
+            <li><a href="jackets.html">Jackets</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="#" id="open-signup" class="nav-link">SIGN UP</a></li>
+        <li class="nav-item"><a href="#" id="open-login" class="nav-link">LOGIN</a></li>
+        <li class="nav-item"><a href="cart.html" class="nav-link cart-link">CART</a></li>
         <li class="nav-item dropdown language-switcher">
           <a href="#" class="nav-link">EN</a>
-          <ul class="dropdown-menu">
-            <li><a href="#" data-lang="en">EN</a></li>
-            <li><a href="#" data-lang="ua">UA</a></li>
-          </ul>
+          <ul class="dropdown-menu"></ul>
         </li>
       </ul>
     </nav>
   </header>
-
   <main>
     <div class="product-container">
       <div class="product-details">
-
         <label for="product-select">Choose a product:</label>
         <select id="product-select">
           <option data-img="Basic_E-shirt_Male_Model (1).webp" value="40">Basic T-shirt - $40</option>
@@ -97,7 +174,6 @@
           <option data-img="My_Name_Is_Crop_-_Gina.webp" value="39">My Name Is Crop Tee - $39</option>
           <option data-img="Graphic_Lean_Tee_-_Clevin.webp" value="42">Graphic Lean Tee - $42</option>
         </select>
-
         <h1 id="product-name">Basic T-shirt</h1>
         <img id="product-img" src="Basic_E-shirt_Male_Model (1).webp" alt="Product">
         <h2 id="product-price">$40</h2>
@@ -129,6 +205,26 @@
     </div>
   </main>
 
+  <div class="modal-overlay" id="signup-modal">
+    <div class="modal">
+      <span class="close-modal" data-close="signup-modal">&times;</span>
+      <h2 class="signup-title">Sign Up</h2>
+      <input type="text" placeholder="Username">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button class="signup-btn">Register</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <span class="close-modal" data-close="login-modal">&times;</span>
+      <h2 class="login-title">Login</h2>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button class="login-btn">Login</button>
+    </div>
+  </div>
   <footer class="kakafooter">
     <div class="cart-info">
       <span class="cart-items">Items in Cart: 0</span>
@@ -215,6 +311,113 @@
 
       updateCartCount();
     });
+
+    // Скопійовані функції для модальних вікон
+    function openModal(id) { document.getElementById(id).style.display = "flex"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+
+    document.getElementById("open-signup").addEventListener("click", e => { e.preventDefault(); openModal("signup-modal"); });
+    document.getElementById("open-login").addEventListener("click", e => { e.preventDefault(); openModal("login-modal"); });
+    document.querySelectorAll(".close-modal").forEach(btn => btn.addEventListener("click", () => closeModal(btn.dataset.close)));
+    document.querySelectorAll(".modal-overlay").forEach(overlay => overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(overlay.id); }));
+
+    // Скопійована функція для випадаючого меню
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) other.classList.remove('show');
+                });
+                dropdown.classList.toggle('show');
+            });
+        });
+        window.addEventListener('click', e => {
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) dropdown.classList.remove('show');
+            });
+        });
+    });
+
+    // Скопійована функція для перемикача мов
+    const translations = {
+        en: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Hoodies', hats:'Hats', jackets:'Jackets', about:'ABOUT US', signup:'SIGN UP', login:'LOGIN', buy:'BUY', loadmore:'LOAD MORE', registerbtn:'Register', loginbtn:'Login', cart:'CART', addToCart: 'ADD TO CART' },
+        ua: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худі', hats:'Кепки', jackets:'Куртки', about:'ПРО НАС', signup:'РЕЄСТРАЦІЯ', login:'ВХІД', buy:'КУПИТИ', loadmore:'ПОКАЗАТИ БІЛЬШЕ', registerbtn:'Зареєструватися', loginbtn:'Увійти', cart:'КОШИК', addToCart: 'ДОДАТИ В КОШИК' },
+        ru: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худи', hats:'Кепки', jackets:'Куртки', about:'О НАС', signup:'РЕГИСТРАЦИЯ', login:'ВОЙТИ', buy:'КУПИТЬ', loadmore:'ПОКАЗАТЬ ЕЩЁ', registerbtn:'Зарегистрироваться', loginbtn:'Войти', cart:'КОРЗИНА', addToCart: 'ДОБАВИТЬ В КОРЗИНУ' },
+        pl: {catalogue:'KATALOG', tshirts:'Koszulki', hoodies:'Bluzy z kapturem', hats:'Czapki', jackets:'Kurtki', about:'O NAS', signup:'ZAREJESTRUJ SIĘ', login:'ZALOGUJ SIĘ', buy:'KUP', loadmore:'POKAŻ WIĘCEJ', registerbtn:'Zarejestruj się', loginbtn:'Zaloguj się', cart:'KOSZYK', addToCart: 'DODAJ DO KOSZYKA' },
+        de: { catalogue:'KATALOG', tshirts:'T-Shirts', hoodies:'Kapuzenpullover', hats:'Mützen', jackets:'Jacken', about:'ÜBER UNS', signup:'REGISTRIEREN', login:'ANMELDEN', buy:'KAUFEN', loadmore:'MEHR ANZEIGEN', registerbtn:'Registrieren', loginbtn:'Einloggen', cart:'WAGEN', addToCart: 'IN DEN WAGEN LEGEN' },
+        fr: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Sweats à capuche', hats:'Casquettes', jackets:'Vestes', about:'À PROPOS', signup:'INSCRIPTION', login:'CONNEXION', buy:'ACHETER', loadmore:'AFFICHER PLUS', registerbtn:'S’inscrire', loginbtn:'Se connecter', cart:'PANIER', addToCart: 'AJOUTER AU PANIER' },
+        es: { catalogue:'CATÁLOGO', tshirts:'Camisetas', hoodies:'Sudaderas', hats:'Gorras', jackets:'Chaquetas', about:'SOBRE NOSOTROS', signup:'REGISTRARSE', login:'INICIAR SESIÓN', buy:'COMPRAR', loadmore:'MOSTRAR MÁS', registerbtn:'Registrarse', loginbtn:'Entrar', cart:'CARRITO', addToCart: 'AÑADIR AL CARRITO' },
+        it: { catalogue:'CATALOGO', tshirts:'Magliette', hoodies:'Felpe', hats:'Cappelli', jackets:'Giacche', about:'CHI SIAMO', signup:'REGISTRATI', login:'ACCEDI', buy:'ACQUISTA', loadmore:'MOSTRA ALTRO', registerbtn:'Registrati', loginbtn:'Accedi', cart:'CARRELLO', addToCart: 'AGGIUNGI AL CARRELLO' }
+    };
+    const languageSwitcher = document.querySelector('.language-switcher');
+    const currentLangLink = languageSwitcher.querySelector('.nav-link');
+    const langMenu = languageSwitcher.querySelector('.dropdown-menu');
+
+    const availableLangs = [
+        { code: 'en', label: 'EN' },
+        { code: 'ua', label: 'UA' },
+        { code: 'ru', label: 'RU' },
+        { code: 'pl', label: 'PL' },
+        { code: 'de', label: 'DE' },
+        { code: 'fr', label: 'FR' },
+        { code: 'es', label: 'ES' },
+        { code: 'it', label: 'IT' }
+    ];
+
+    langMenu.innerHTML = '';
+    availableLangs.forEach(lang => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#';
+        a.textContent = lang.label;
+        a.setAttribute('data-lang', lang.code);
+        li.appendChild(a);
+        langMenu.appendChild(li);
+    });
+
+    function switchLanguage(lang) {
+        document.querySelector('.catalogue-link').textContent = translations[lang].catalogue;
+        const catalogueMenu = document.querySelector('.catalogue-link').parentElement.querySelector('.dropdown-menu');
+        catalogueMenu.children[0].querySelector('a').textContent = translations[lang].tshirts;
+        catalogueMenu.children[1].querySelector('a').textContent = translations[lang].hoodies;
+        catalogueMenu.children[2].querySelector('a').textContent = translations[lang].hats;
+        catalogueMenu.children[3].querySelector('a').textContent = translations[lang].jackets;
+        const addToCartBtnText = document.querySelector('.add-to-cart-btn .button-text');
+    if (addToCartBtnText) addToCartBtnText.textContent = translations[lang].addToCart;
+
+        document.getElementById('open-signup').textContent = translations[lang].signup;
+        document.getElementById('open-login').textContent = translations[lang].login;
+        document.querySelector('.cart-link').textContent = translations[lang].cart;
+        
+        const signupTitle = document.querySelector('.signup-title');
+        const loginTitle = document.querySelector('.login-title');
+        const signupBtn = document.querySelector('.signup-btn');
+        const loginBtn = document.querySelector('.login-btn');
+        if (signupTitle) signupTitle.textContent = translations[lang].signup;
+        if (loginTitle) loginTitle.textContent = translations[lang].login;
+        if (signupBtn) signupBtn.textContent = translations[lang].registerbtn;
+        if (loginBtn) loginBtn.textContent = translations[lang].loginbtn;
+    }
+
+    langMenu.querySelectorAll('[data-lang]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const lang = e.target.dataset.lang;
+            localStorage.setItem('selectedLang', lang);
+            currentLangLink.textContent = lang.toUpperCase();
+            switchLanguage(lang);
+            languageSwitcher.classList.remove('show');
+        });
+    });
+
+    const savedLang = localStorage.getItem('selectedLang');
+    if (savedLang && translations[savedLang]) {
+        currentLangLink.textContent = savedLang.toUpperCase();
+        switchLanguage(savedLang);
+    }
   </script>
 </body>
 </html>

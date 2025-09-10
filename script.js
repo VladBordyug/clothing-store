@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('open-signup').textContent = translations[lang].signup;
   document.getElementById('open-login').textContent = translations[lang].login;
   document.querySelector('.cart-link').textContent = translations[lang].cart;
+  
 
   document.querySelectorAll('.button-text').forEach(btn => btn.textContent = translations[lang].buy);
 
