@@ -156,7 +156,7 @@
   cursor: pointer;
 }
 
-/* Country list */
+
 #country-list {
   max-height: 150px;
   overflow-y: auto;
@@ -190,25 +190,39 @@
 </head>
 <body>
   <header class="header">
-   <a href="index.html">
+  <a href="index.html">
     <div class="logo">CLOTHES SHOP</div>
-    </a>
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link catalogue-link" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown(event)">CATALOGUE</a>
-          <ul class="dropdown-menu" style="display: none;">
-            <li><a href="index.html">T-shirts</a></li>
-            <li><a href="hoodies.html">Hoodies</a></li>
-            <li><a href="hats.html">Hats</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">SIGN UP</a></li>
-        <li class="nav-item"><a href="login.html" target="_blank" class="nav-link">LOGIN</a></li>
-        <li class="nav-item"><a href="cart.html" class="nav-link">CART</a></li>
-      </ul>
-    </nav>
-  </header>
+  </a>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link catalogue-link" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown(event)">CATALOGUE</a>
+        <ul class="dropdown-menu" style="display: none;">
+          <li><a href="index.html">T-shirts</a></li>
+          <li><a href="hoodies.html">Hoodies</a></li>
+          <li><a href="hats.html">Hats</a></li>
+          <li><a href="jackets.html">Jackets</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="login.html" id="open-signup" class="nav-link">SIGN UP</a></li>
+      <li class="nav-item"><a href="login.html" id="open-login" class="nav-link">LOGIN</a></li>
+      <li class="nav-item"><a href="cart.html" class="cart-link nav-link">CART</a></li>
+      <li class="nav-item dropdown language-switcher">
+        <a href="#" class="nav-link current-lang">EN</a>
+        <ul class="dropdown-menu lang-menu" style="display: none;">
+          <li><a href="#" data-lang="en">EN</a></li>
+          <li><a href="#" data-lang="ua">UA</a></li>
+          <li><a href="#" data-lang="pl">PL</a></li>
+          <li><a href="#" data-lang="de">DE</a></li>
+          <li><a href="#" data-lang="fr">FR</a></li>
+          <li><a href="#" data-lang="it">IT</a></li>
+          <li><a href="#" data-lang="es">ES</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
 
   <h1>🛒 Your Cart</h1>
 
@@ -302,6 +316,49 @@
         </div>
         <button id="confirm-order" type="button" class="purchase--btn">Confirm Order</button>
       </form>
+      <!-- Під твоїм delivery-form -->
+<div id="checkout-summary" style="display:none; margin-top:20px;">
+  <div class="container">
+    <div class="card cart">
+      <label class="title">CHECKOUT</label>
+      <div class="steps">
+        <div class="step">
+          <div>
+            <span>SHIPPING</span>
+            <p id="summary-address"></p>
+            <p id="summary-country"></p>
+          </div>
+          <hr />
+          <div>
+            <span>PAYMENT METHOD</span>
+            <p id="summary-payment"></p>
+            <p id="summary-card"></p>
+          </div>
+          <hr />
+          <div class="payments">
+            <span>PAYMENT</span>
+            <div class="details">
+              <span>Subtotal:</span>
+              <span id="summary-subtotal">$0.00</span>
+              <span>Shipping:</span>
+              <span id="summary-shipping">$0.00</span>
+              <span>Tax:</span>
+              <span id="summary-tax">$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card checkout">
+      <div class="footer">
+        <label class="price" id="summary-total">$0.00</label>
+        <button class="checkout-btn">Confirm & Pay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 
@@ -451,6 +508,62 @@ const clearCartBtn = document.getElementById("clear-cart-btn");
     localStorage.removeItem("cart"); 
     loadCart(); 
   });
+  
   </script>
+  <script>
+const translations = {
+  en: { catalogue: "CATALOGUE", tshirts: "T-SHIRTS", hoodies: "HOODIES", hats: "HATS", jackets: "JACKETS", signup: "SIGN UP", login: "LOGIN", cart: "CART", clear: "CLEAR CART", checkout: "CHECKOUT" },
+  ua: { catalogue: "КАТАЛОГ", tshirts: "ФУТБОЛКИ", hoodies: "ХУДІ", hats: "КЕПКИ", jackets: "КУРТКИ", signup: "РЕЄСТРАЦІЯ", login: "УВІЙТИ", cart: "КОШИК", clear: "ОЧИСТИТИ КОШИК", checkout: "ПЕРЕЙТИ ДО ОПЛАТИ" },
+  pl: { catalogue: "KATALOG", tshirts: "KOSZULKI", hoodies: "BLUZY", hats: "CZAPKI", jackets: "KURTKI", signup: "REJESTRACJA", login: "ZALOGUJ SIĘ", cart: "KOSZYK", clear: "WYCZYŚĆ KOSZYK", checkout: "DO KASY" },
+  de: { catalogue: "KATALOG", tshirts: "T-SHIRTS", hoodies: "KAPUZENSHIRTS", hats: "MÜTZEN", jackets: "JACKEN", signup: "REGISTRIEREN", login: "ANMELDEN", cart: "WARENKORB", clear: "WARENKORB LEEREN", checkout: "ZUR KASSE" },
+  fr: { catalogue: "CATALOGUE", tshirts: "T-SHIRTS", hoodies: "SWEATS À CAPUCHE", hats: "CASQUETTES", jackets: "VESTES", signup: "S’INSCRIRE", login: "CONNEXION", cart: "PANIER", clear: "VIDER LE PANIER", checkout: "PASSER À LA CAISSE" },
+  it: { catalogue: "CATALOGO", tshirts: "MAGLIETTE", hoodies: "FELPE", hats: "CAPPELLI", jackets: "GIACCHE", signup: "REGISTRATI", login: "ACCEDI", cart: "CARRELLO", clear: "SVUOTA CARRELLO", checkout: "VAI ALLA CASSA" },
+  es: { catalogue: "CATÁLOGO", tshirts: "CAMISETAS", hoodies: "SUDADERAS", hats: "GORRAS", jackets: "CHAQUETAS", signup: "REGISTRARSE", login: "INICIAR SESIÓN", cart: "CARRITO", clear: "VACIAR CARRITO", checkout: "FINALIZAR COMPRA" }
+};
+
+const languageSwitcher = document.querySelector('.language-switcher');
+const currentLangLink = document.querySelector('.current-lang');
+const langMenu = document.querySelector('.lang-menu');
+
+currentLangLink.addEventListener('click', e => {
+  e.preventDefault();
+  langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+langMenu.querySelectorAll('[data-lang]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const lang = e.target.dataset.lang;
+    localStorage.setItem('selectedLang', lang);
+    currentLangLink.textContent = lang.toUpperCase();
+    switchLanguage(lang);
+    langMenu.style.display = 'none';
+  });
+});
+
+function switchLanguage(lang) {
+  document.querySelector('.catalogue-link').textContent = translations[lang].catalogue;
+  const catalogueMenu = document.querySelector('.catalogue-link').nextElementSibling;
+  catalogueMenu.children[0].querySelector('a').textContent = translations[lang].tshirts;
+  catalogueMenu.children[1].querySelector('a').textContent = translations[lang].hoodies;
+  catalogueMenu.children[2].querySelector('a').textContent = translations[lang].hats;
+  catalogueMenu.children[3].querySelector('a').textContent = translations[lang].jackets;
+
+  document.getElementById('open-signup').textContent = translations[lang].signup;
+  document.getElementById('open-login').textContent = translations[lang].login;
+  document.querySelector('.cart-link').textContent = translations[lang].cart;
+
+  document.getElementById('clear-cart-btn').textContent = translations[lang].clear;
+  document.getElementById('checkout-btn').textContent = translations[lang].checkout;
+}
+
+
+const savedLang = localStorage.getItem('selectedLang') || 'en';
+if (translations[savedLang]) {
+  currentLangLink.textContent = savedLang.toUpperCase();
+  switchLanguage(savedLang);
+}
+</script>
+
 </body>
 </html>
