@@ -343,14 +343,14 @@
 
     // Скопійована функція для перемикача мов
     const translations = {
-        en: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Hoodies', hats:'Hats', jackets:'Jackets', about:'ABOUT US', signup:'SIGN UP', login:'LOGIN', buy:'BUY', loadmore:'LOAD MORE', registerbtn:'Register', loginbtn:'Login', cart:'CART', addToCart: 'ADD TO CART' },
-        ua: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худі', hats:'Кепки', jackets:'Куртки', about:'ПРО НАС', signup:'РЕЄСТРАЦІЯ', login:'ВХІД', buy:'КУПИТИ', loadmore:'ПОКАЗАТИ БІЛЬШЕ', registerbtn:'Зареєструватися', loginbtn:'Увійти', cart:'КОШИК', addToCart: 'ДОДАТИ В КОШИК' },
-        ru: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худи', hats:'Кепки', jackets:'Куртки', about:'О НАС', signup:'РЕГИСТРАЦИЯ', login:'ВОЙТИ', buy:'КУПИТЬ', loadmore:'ПОКАЗАТЬ ЕЩЁ', registerbtn:'Зарегистрироваться', loginbtn:'Войти', cart:'КОРЗИНА', addToCart: 'ДОБАВИТЬ В КОРЗИНУ' },
-        pl: {catalogue:'KATALOG', tshirts:'Koszulki', hoodies:'Bluzy z kapturem', hats:'Czapki', jackets:'Kurtki', about:'O NAS', signup:'ZAREJESTRUJ SIĘ', login:'ZALOGUJ SIĘ', buy:'KUP', loadmore:'POKAŻ WIĘCEJ', registerbtn:'Zarejestruj się', loginbtn:'Zaloguj się', cart:'KOSZYK', addToCart: 'DODAJ DO KOSZYKA' },
-        de: { catalogue:'KATALOG', tshirts:'T-Shirts', hoodies:'Kapuzenpullover', hats:'Mützen', jackets:'Jacken', about:'ÜBER UNS', signup:'REGISTRIEREN', login:'ANMELDEN', buy:'KAUFEN', loadmore:'MEHR ANZEIGEN', registerbtn:'Registrieren', loginbtn:'Einloggen', cart:'WAGEN', addToCart: 'IN DEN WAGEN LEGEN' },
-        fr: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Sweats à capuche', hats:'Casquettes', jackets:'Vestes', about:'À PROPOS', signup:'INSCRIPTION', login:'CONNEXION', buy:'ACHETER', loadmore:'AFFICHER PLUS', registerbtn:'S’inscrire', loginbtn:'Se connecter', cart:'PANIER', addToCart: 'AJOUTER AU PANIER' },
-        es: { catalogue:'CATÁLOGO', tshirts:'Camisetas', hoodies:'Sudaderas', hats:'Gorras', jackets:'Chaquetas', about:'SOBRE NOSOTROS', signup:'REGISTRARSE', login:'INICIAR SESIÓN', buy:'COMPRAR', loadmore:'MOSTRAR MÁS', registerbtn:'Registrarse', loginbtn:'Entrar', cart:'CARRITO', addToCart: 'AÑADIR AL CARRITO' },
-        it: { catalogue:'CATALOGO', tshirts:'Magliette', hoodies:'Felpe', hats:'Cappelli', jackets:'Giacche', about:'CHI SIAMO', signup:'REGISTRATI', login:'ACCEDI', buy:'ACQUISTA', loadmore:'MOSTRA ALTRO', registerbtn:'Registrati', loginbtn:'Accedi', cart:'CARRELLO', addToCart: 'AGGIUNGI AL CARRELLO' }
+        en: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Hoodies', hats:'Hats', jackets:'Jackets', about:'ABOUT US', signup:'SIGN UP', login:'LOGIN', buy:'BUY', loadmore:'LOAD MORE', registerbtn:'Register', loginbtn:'Login', cart:'CART', addToCart: 'ADD TO CART',quantity: "Quantity", itemsInCart: "Items in Cart: "},
+        ua: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худі', hats:'Кепки', jackets:'Куртки', about:'ПРО НАС', signup:'РЕЄСТРАЦІЯ', login:'ВХІД', buy:'КУПИТИ', loadmore:'ПОКАЗАТИ БІЛЬШЕ', registerbtn:'Зареєструватися', loginbtn:'Увійти', cart:'КОШИК', addToCart: 'ДОДАТИ В КОШИК', quantity: "Кількість", itemsInCart: "Товари в кошику: "},
+        ru: { catalogue:'КАТАЛОГ', tshirts:'Футболки', hoodies:'Худи', hats:'Кепки', jackets:'Куртки', about:'О НАС', signup:'РЕГИСТРАЦИЯ', login:'ВОЙТИ', buy:'КУПИТЬ', loadmore:'ПОКАЗАТЬ ЕЩЁ', registerbtn:'Зарегистрироваться', loginbtn:'Войти', cart:'КОРЗИНА', addToCart: 'ДОБАВИТЬ В КОРЗИНУ', quantity: "Количество", itemsInCart: "Товары в корзине: "},
+        pl: {catalogue:'KATALOG', tshirts:'Koszulki', hoodies:'Bluzy z kapturem', hats:'Czapki', jackets:'Kurtki', about:'O NAS', signup:'ZAREJESTRUJ SIĘ', login:'ZALOGUJ SIĘ', buy:'KUP', loadmore:'POKAŻ WIĘCEJ', registerbtn:'Zarejestruj się', loginbtn:'Zaloguj się', cart:'KOSZYK', addToCart: 'DODAJ DO KOSZYKA', quantity: "Ilość", itemsInCart: "Przedmioty w koszyku: "},
+        de: { catalogue:'KATALOG', tshirts:'T-Shirts', hoodies:'Kapuzenpullover', hats:'Mützen', jackets:'Jacken', about:'ÜBER UNS', signup:'REGISTRIEREN', login:'ANMELDEN', buy:'KAUFEN', loadmore:'MEHR ANZEIGEN', registerbtn:'Registrieren', loginbtn:'Einloggen', cart:'WAGEN', addToCart: 'IN DEN WAGEN LEGEN', quantity: "Menge", itemsInCart: "Artikel im Warenkorb: "},
+        fr: { catalogue:'CATALOGUE', tshirts:'T-shirts', hoodies:'Sweats à capuche', hats:'Casquettes', jackets:'Vestes', about:'À PROPOS', signup:'INSCRIPTION', login:'CONNEXION', buy:'ACHETER', loadmore:'AFFICHER PLUS', registerbtn:'S’inscrire', loginbtn:'Se connecter', cart:'PANIER', addToCart: 'AJOUTER AU PANIER', quantity: "Quantité", itemsInCart: "Articles dans le panier: "},
+        es: { catalogue:'CATÁLOGO', tshirts:'Camisetas', hoodies:'Sudaderas', hats:'Gorras', jackets:'Chaquetas', about:'SOBRE NOSOTROS', signup:'REGISTRARSE', login:'INICIAR SESIÓN', buy:'COMPRAR', loadmore:'MOSTRAR MÁS', registerbtn:'Registrarse', loginbtn:'Entrar', cart:'CARRITO', addToCart: 'AÑADIR AL CARRITO', quantity: "Cantidad", itemsInCart: "Artículos en el carrito: "},
+        it: { catalogue:'CATALOGO', tshirts:'Magliette', hoodies:'Felpe', hats:'Cappelli', jackets:'Giacche', about:'CHI SIAMO', signup:'REGISTRATI', login:'ACCEDI', buy:'ACQUISTA', loadmore:'MOSTRA ALTRO', registerbtn:'Registrati', loginbtn:'Accedi', cart:'CARRELLO', addToCart: 'AGGIUNGI AL CARRELLO', quantity: "Quantità", itemsInCart: "Articoli nel carrello: "}
     };
     const languageSwitcher = document.querySelector('.language-switcher');
     const currentLangLink = languageSwitcher.querySelector('.nav-link');
@@ -387,6 +387,12 @@
         catalogueMenu.children[3].querySelector('a').textContent = translations[lang].jackets;
         const addToCartBtnText = document.querySelector('.add-to-cart-btn .button-text');
     if (addToCartBtnText) addToCartBtnText.textContent = translations[lang].addToCart;
+    const quantityLabel = document.querySelector('label[for="quantity"]');
+    if (quantityLabel) quantityLabel.textContent = translations[lang].quantity;
+    const cartItemsSpan = document.querySelector('.cart-items');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cartItemsSpan) cartItemsSpan.textContent = `${translations[lang].itemsInCart}${cart.length}`;
+    
 
         document.getElementById('open-signup').textContent = translations[lang].signup;
         document.getElementById('open-login').textContent = translations[lang].login;
