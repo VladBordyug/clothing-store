@@ -52,10 +52,10 @@
   width: fit-content;
   height: fit-content;
   background: #FFFFFF;
-  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 
-              0px 105px 63px rgba(0, 0, 0, 0.05), 
-              0px 47px 47px rgba(0, 0, 0, 0.09), 
-              0px 12px 26px rgba(0, 0, 0, 0.1), 
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
+              0px 105px 63px rgba(0, 0, 0, 0.05),
+              0px 47px 47px rgba(0, 0, 0, 0.09),
+              0px 12px 26px rgba(0, 0, 0, 0.1),
               0px 0px 0px rgba(0, 0, 0, 0.1);
   border-radius: 26px;
   max-width: 450px;
@@ -174,15 +174,15 @@
   background: #eee;
 }
 #country-search {
-  color: #000; 
+  color: #000;
 }
 
 #country-list li {
-  color: #000; 
-  background: #fff; 
+  color: #000;
+  background: #fff;
 }
 #country-list li:hover {
-  background: #f0f0f0; 
+  background: #f0f0f0;
 }
 
 </style>
@@ -216,8 +216,8 @@
           <li><a href="#" data-lang="pl">PL</a></li>
           <li><a href="#" data-lang="de">DE</a></li>
           <li><a href="#" data-lang="fr">FR</a></li>
-          <li><a href="#" data-lang="it">IT</a></li>
           <li><a href="#" data-lang="es">ES</a></li>
+          <li><a href="#" data-lang="it">IT</a></li>
         </ul>
       </li>
     </ul>
@@ -233,6 +233,8 @@
   <th>Product</th>
   <th>Size</th>
   <th>Price</th>
+  <th>Quantity</th>
+  <th>Total Item Price</th>
   <th></th>
 </tr>
 
@@ -247,16 +249,16 @@
 </div>
 
   <div id="checkout-modal" style="
-    display:none; 
-    position:fixed; 
+    display:none;
+    position:fixed;
     top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.6); 
-    align-items:center; 
+    background:rgba(0,0,0,0.6);
+    align-items:center;
     justify-content:center;
     z-index: 1000;">
-    
+
     <div class="modal">
-      
+
       <form class="form" id="card-form">
         <div class="payment--options">
           <button type="button">PayPal</button>
@@ -288,7 +290,7 @@
         <button type="submit" class="purchase--btn">Checkout</button>
       </form>
 
-      
+
       <form class="form" id="delivery-form" style="display:none;">
         <h2>Delivery Information</h2>
         <div class="input_container">
@@ -317,12 +319,12 @@
         </div>
         <button id="confirm-order" type="button" class="purchase--btn">Confirm Order</button>
       </form>
-      
+
     </div>
   </div>
 
   <script>
-   
+
     function toggleDropdown(event) {
       event.preventDefault();
       const link = event.currentTarget;
@@ -333,40 +335,44 @@
     }
 
     function loadCart() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const tbody = document.querySelector('#cart-table tbody');
-  const totalDiv = document.querySelector('.total');
-  tbody.innerHTML = '';
-  let total = 0;
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const tbody = document.querySelector('#cart-table tbody');
+      const totalDiv = document.querySelector('.total');
+      tbody.innerHTML = '';
+      let total = 0;
 
-  cart.forEach((item, index) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${item.name}</td>
-      <td>${item.size}</td>
-      <td>$${item.price}</td>
-      <td><button class="remove-btn" data-index="${index}">❌</button></td>
-    `;
-    tbody.appendChild(row);
-    total += item.price;
-  });
+      cart.forEach((item, index) => {
+        const row = document.createElement('tr'); // Ось тут було виправлення
+        const itemQuantity = item.quantity || 1;
+        const itemTotalPrice = item.price * itemQuantity;
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.size}</td>
+          <td>$${item.price}</td>
+          <td>${itemQuantity}</td>
+          <td>$${itemTotalPrice}</td>
+          <td><button class="remove-btn" data-index="${index}">❌</button></td>
+        `;
+        tbody.appendChild(row);
+        total += itemTotalPrice;
+      });
 
-  totalDiv.textContent = `Total: $${total}`;
+      totalDiv.textContent = `Total: $${total}`;
 
-  
-  document.querySelectorAll('.remove-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = btn.dataset.index;
-      cart.splice(idx, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      loadCart();
-    });
-  });
-}
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = btn.dataset.index;
+          cart.splice(idx, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        });
+      });
+    }
 
     loadCart();
 
-    
+
     const checkoutBtn = document.getElementById("checkout-btn");
     const modal = document.getElementById("checkout-modal");
     const cardForm = document.getElementById("card-form");
@@ -382,7 +388,7 @@
       deliveryForm.style.display = "flex";
     });
 
-   
+
     const countries = [
       { name: "Ukraine", flag: "🇺🇦" },
       { name: "United States", flag: "🇺🇸" },
@@ -417,7 +423,7 @@ const citySelect = document.getElementById("city");
 
 
 const ukraineCities = [
-  "Київ", "Львів", "Харків", "Одеса", "Дніпро", 
+  "Київ", "Львів", "Харків", "Одеса", "Дніпро",
   "Запоріжжя", "Вінниця", "Івано-Франківськ", "Чернівці", "Тернопіль", "Миргород", "Полтава", "Суми", "Житомир", "Рівне", "Чернігів", "Хмельницький", "Кропивницький", "Черкаси", "Ужгород", "Мукачево", "Бердянськ", "Маріуполь", "Миколаїв", "Херсон", "Біла Церква", "Бровари", "Кам'янець-Подільський", "Кременчук", "Луцьк", "Нікополь", "Олександрія", "Павлоград", "Сєвєродонецьк", "Слов'янськ", "Тернівка", "Трускавець", "Фастів", "Шостка", "Яремче", "Бахмут", "Берегове", "Бориспіль", "Васильків", "Володимир-Волинський", "Горішні Плавні", "Дрогобич", "Євпаторія", "Жовті Води", "Золотоноша", "Калуш", "Керч", "Козятин", "Коростень", "Коростишів", "Костянтинівка", "Краматорськ", "Лисичанськ", "Лозова", "Лубни", "Макіївка", "Мелітополь", "Ніжин", "Новомосковськ", "Новоукраїнка", "Переяслав", "Покровськ", "Прилуки", "Славутич", "Старокостянтинів", "Стрий", "Тальне", "Теребовля", "Тетіїв", "Умань", "Феодосія", "Часів Яр", "Шепетівка", "Южне"
 ];
 
@@ -427,7 +433,7 @@ function selectCountry(country) {
   postService.innerHTML = "";
 
   if (country === "Ukraine") {
-    
+
     ["Нова Пошта","Укрпошта"].forEach(p => {
       const opt = document.createElement("option");
       opt.value = p; opt.textContent = p;
@@ -435,7 +441,7 @@ function selectCountry(country) {
     });
     postServiceContainer.style.display = "block";
 
-    
+
     citySelect.innerHTML = `<option value="">-- Select City --</option>`;
     ukraineCities.forEach(city => {
       const opt = document.createElement("option");
@@ -451,23 +457,23 @@ function selectCountry(country) {
     });
     postServiceContainer.style.display = "block";
 
-    
+
     citySelect.innerHTML = "";
     citySelect.outerHTML = `<input type="text" id="city" class="input_field" required>`;
   } else {
     postServiceContainer.style.display = "none";
 
-    
+
     citySelect.innerHTML = "";
     citySelect.outerHTML = `<input type="text" id="city" class="input_field" required>`;
   }
 }
 const clearCartBtn = document.getElementById("clear-cart-btn");
   clearCartBtn.addEventListener("click", () => {
-    localStorage.removeItem("cart"); 
-    loadCart(); 
+    localStorage.removeItem("cart");
+    loadCart();
   });
-  
+
   </script>
   <script>
 const translations = {
@@ -530,8 +536,8 @@ if (translations[savedLang]) {
   confirmOrderBtn.addEventListener("click", () => {
 
     alert("Дякуємо! Ваше замовлення підтверджено ✅");
-    
- 
+
+
     const modal = document.getElementById("checkout-modal");
     modal.style.display = "none";
 
